@@ -1,0 +1,76 @@
+@use "global" as *;
+
+.card-blog {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  background-color: $base;
+  box-shadow: rem(2) rem(2) rem(10) rgba($color: $black2, $alpha: 0.25);
+  @include mq(md) {
+  }
+}
+
+.card-blog:hover {
+  opacity: 0.9;
+}
+.card-blog:hover img {
+  transition: scale 0.3s;
+  scale: 1.1;
+
+}
+
+.card-blog__container {
+  padding: rem(16) rem(16) rem(24) rem(16);
+}
+
+.card-blog__img {
+  aspect-ratio: 280/188;
+  overflow: hidden;
+}
+
+.card-blog__img img {
+  aspect-ratio: 335/223;
+  object-fit: cover;
+}
+
+.card-blog__body {
+  margin-top: rem(24);
+  @include mq(md) {
+    margin-top: rem(21);
+  }
+}
+
+.card-blog__date {
+  display: inline-block;
+  font-size: rem(12);
+  line-height: calc(18 / 12);
+  font-weight: $regular;
+}
+
+.card-blog__title {
+  font-size: rem(16);
+  line-height: calc(24 / 16);
+  border-bottom: rem(1) solid $black;
+  @include mq(md) {
+  }
+}
+
+.card-blog__text {
+  font-size: rem(16);
+  line-height: calc(24 / 16);
+  // padding-top: rem(16);
+  margin-top: rem(16);
+}
+
+.card-blog__price-box {
+  display: flex;
+  text-align: center;
+  gap: rem(16);
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: rem(8);
+  @include mq(md) {
+    gap: rem(24);
+  }
+}

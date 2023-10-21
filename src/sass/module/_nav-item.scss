@@ -1,0 +1,50 @@
+@use "global" as *;
+
+.nav-subitem__container {
+  @include mq(md) {
+    display: flex;
+  }
+}
+
+.nav-subitem__box {
+  @include mq(md) {
+    display: flex;
+  }
+}
+
+.nav-subitem__container + .nav-subitem__container {
+  margin-left: rem(16);
+}
+
+.nav-subitem__title {
+  font-weight: bold;
+  margin-top: rem(20);
+}
+
+.nav-subitems__title a:hover {
+  opacity: 0.7;
+}
+
+.nav-subitem__title + .nav-subitem__title {
+  margin-top: rem(20);
+}
+
+.nav-subitem__title::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../images/common/_ヒトデ.png);
+  width: rem(18);
+  height: rem(18);
+  background-size: contain;
+  vertical-align: middle;
+}
+
+.nav-subitem__list {
+  margin-top: rem(24);
+  font-size: rem(16);
+  font-weight: $normal;
+  line-height: calc(18 / 16);
+  @include mq(md) {
+    padding-left: rem(0);
+  }
+}

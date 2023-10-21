@@ -1,0 +1,39 @@
+@use "global" as *;
+
+.archive-voice__tab {
+  position: relative;
+  @include mq(md) {
+  }
+}
+
+.archive-voice__tab::before {
+  content: "";
+  position: absolute;
+  left: calc(50% - min(48.7vw, 39.9rem));
+  top: rem(-40);
+  width: rem(120);
+  height: rem(55);
+  background-image: url(../images/common/sp-tab-img.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  z-index: -1;
+  @include mq(md) {
+    top: rem(-80);
+    width: rem(301);
+    height: rem(138);
+  }
+}
+
+.archive-voice__cards {
+  margin-top: rem(40);
+  margin: 0 auto;
+  max-width: rem(600);
+  @include mq("md") {
+    max-width: initial;
+  }
+}
+
+.archive-voice__pagenav {
+  margin-top: rem(80);
+}

@@ -1,0 +1,73 @@
+@use "global" as *;
+
+.page-contact {
+  position: relative;
+}
+
+.page-contact::before {
+  background-image: url(../images/common/sp-tab-img.png);
+  content: "";
+  position: absolute;
+  left: calc(50% - min(48.7vw, 39.9rem));
+  top: rem(-40);
+  width: rem(120);
+  height: rem(55);
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  @include mq(md) {
+    top: rem(-80);
+    width: rem(301);
+    height: rem(138);
+  }
+}
+
+.page-contact__inner.inner {
+  color: $gray3;
+  font-family: "Noto Sans JP";
+  max-width: rem(550);
+  width: 100%;
+  margin-inline: auto;
+  @include mq(md) {
+    max-width: rem(750);
+  }
+}
+
+.page-contact__container {
+}
+
+.page-contact__check-box {
+  padding: 0 rem(30);
+  font-size: rem(14);
+}
+.page-contact__check-box p {
+  text-align: left;
+  position: relative;
+  @include mq(md) {
+    text-align: center;
+  }
+}
+.page-contact__check-box p::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: -9%;
+  width: rem(22);
+  height: rem(22);
+  transform: translateY(-50%);
+  background: $base;
+  border: rem(1) solid $black;
+  display: block;
+  @include mq(md) {
+  left: 18%;
+
+  }
+}
+
+.page-contact__button {
+  margin-top: rem(24);
+  text-align: center;
+  @include mq(md) {
+    margin-top: rem(40);
+  }
+}

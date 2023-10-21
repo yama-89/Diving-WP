@@ -1,0 +1,67 @@
+@use "global" as *;
+
+.page-terms-of-service {
+  position: relative;
+}
+
+.page-terms-of-service::before {
+  background-image: url(../images/common/sp-tab-img.png);
+  content: "";
+  position: absolute;
+  left: calc(50% - min(48.7vw, 39.9rem));
+  top: rem(-24);
+  width: rem(120);
+  height: rem(55);
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  @include mq(md) {
+    top: rem(-80);
+    width: rem(301);
+    height: rem(138);
+  }
+}
+
+.page-terms-of-service__inner {
+  max-width: rem(830);
+  margin-inline: auto;
+  padding-right: $padding-sp;
+  padding-left: $padding-sp;
+  margin-right: auto;
+  margin-left: auto;
+  color: $gray3;
+  font-family: "Noto Sans JP";
+}
+
+.page-terms-of-service__title {
+  font-size: rem(24);
+  @include mq(md) {
+    font-size: rem(32);
+  }
+}
+
+.page-terms-of-service__content {
+  margin-top: rem(40);
+  font-size: rem(16);
+  line-height: calc(32 / 16);
+  letter-spacing: 0.01em;
+  @include mq(md) {
+    font-size: rem(12);
+  }
+}
+
+.page-terms-of-service ol {
+  list-style: auto;
+  margin-left: rem(20);
+}
+
+.page-terms-of-service ul {
+}
+
+.page-terms-of-service__content ol {
+  margin-top: rem(32);
+}
+
+.page-terms-of-service__content p:last-child {
+  margin-top: rem(34);
+}
