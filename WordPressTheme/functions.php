@@ -171,8 +171,8 @@ function change_posts_per_page($query)
 {
     if (is_admin() || !$query->is_main_query())
         return;
-    if ($query->is_post_type_archive('works')) { //カスタム投稿タイプを指定
-        $query->set('posts_per_page', '6'); //表示件数を指定
+    if ($query->is_post_type_archive('campaign')) { //カスタム投稿タイプを指定
+        $query->set('posts_per_page', '4'); //表示件数を指定
     }
     if ($query->is_post_type_archive('blog')) { //カスタム投稿タイプを指定
         $query->set('posts_per_page', '9'); //表示件数を指定
@@ -201,10 +201,10 @@ function custom_posts_per_page($query)
         $query->set('posts_per_page', 1);
     }
 
-    // アーカイブページの場合は10件表示する
-    if ($query->is_archive()) {
-        $query->set('posts_per_page', 6);
-    }
+    // // アーカイブページの場合は10件表示する
+    // if ($query->is_archive()) {
+    //     $query->set('posts_per_page', 6);
+    // }
 }
 add_action('pre_get_posts', 'custom_posts_per_page');
 

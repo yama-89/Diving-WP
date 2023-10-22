@@ -1,3 +1,4 @@
+<?php if (!is_page('contact') && !is_404()): ?>
 <section id="contact" class="contact top-contact">
     <div class="contact__inner">
         <div class="contact__container">
@@ -32,6 +33,7 @@
         </div>
     </div>
 </section>
+<?php  endif; ?>
 
 <div id="page-top" class="page-top js-page-top">
     <picture>

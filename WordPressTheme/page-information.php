@@ -16,9 +16,8 @@
         </div>
       </section>
 
-      <div class="breadcrumb layout-breadcrumb">
-        <div class="breadcrumb__inner inner">top > キャンペーン</div>
-      </div>
+      <?php get_template_part('parts/breadcrumb') ?>
+
 
       <section class="page-information layout-page-information">
         <div class="page-information__inner inner">

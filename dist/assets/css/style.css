@@ -529,7 +529,7 @@ a {
 	object-fit: cover;
 }
 
-.blog-content ol {
+.blog-content ul {
 	margin-top: 1.5rem;
 }
 
@@ -3243,7 +3243,7 @@ html {
 	aspect-ratio: 700/468;
 }
 
-.blog-content ol {
+.blog-content ul {
 	margin-top: 2.5rem;
 }
 
