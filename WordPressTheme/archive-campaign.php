@@ -20,19 +20,29 @@
 
     <section class="archive-campaign layout-archive-campaign">
         <div class="archive-campaign__inner inner">
-            <ul class="archive-campaign__tab tab-items">
-                <li class="tab-items__item current"><a href="">ALL</a></li>
-                <li class="tab-items__item"><a href="">ライセンス講習</a></li>
-                <li class="tab-items__item"><a href="">ファンダイビング</a></li>
-                <li class="tab-items__item"><a href="">体験ダイビング</a></li>
-            </ul>
+
+            <div class="archive-campaign__tab tab-items">
+            <?php
+            $taxonomy = 'campaign-tag'; // タクソノミースラッグを指定
+            $terms = get_terms([
+                'taxonomy' => $taxonomy,
+                'hide_empty' => false,
+            ]);
+            $all_link = esc_url(get_post_type_archive_link('campaign'));
+            echo '<span class=tab-items__item current><a href="' . $all_link . '" class="current-all">ALL</a></span>';
+            foreach ($terms as $term) {
+                $term_link = get_term_link($term, $taxonomy);
+                echo '<span class=tab-items__item><a href="' . esc_url($term_link) . '">' . esc_html($term->name) . '</a></span>';
+            }
+            ?>
+            </div>
             <div class="archive-campaign__cards archive-campaign-cards">
                 <?php if (have_posts()) : ?>
                     <?php while (have_posts()) : the_post(); ?>
                         <div class="archive-campaign-cards__card card-campaign">
                             <div class="card-campaign__img">
                                 <?php if (has_post_thumbnail()) : ?>
-                                    <?php the_post_thumbnail('full', array('class' => 'blog-content__img')); ?>
+                                    <?php the_post_thumbnail('full', array('class' => 'card-campaignt__img')); ?>
                                 <?php else : ?>
                                     <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
                                 <?php endif; ?>
@@ -57,14 +67,13 @@
                                         全部コミコミ(お一人様)
                                     </p>
                                     <div class="card-campaign__price-box card-campaign__price-box--campaign">
-                                        <p class="card-campaign__price-text">¥56,000</p>
-                                        <p class="card-campaign__price-subtext">¥46,000</p>
+                                        <p class="card-campaign__price-text">¥<?php the_field("campaign-price1"); ?></p>
+                                        <p class="card-campaign__price-subtext">¥<?php the_field("campaign-price2"); ?></p>
                                     </div>
                                 </div>
                                 <div class="card-campaign__text-box">
                                     <p class="card-campaign__text">
-                                        ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
-                                        ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
+                                    <?php the_content(); ?>
                                     </p>
                                     <time class="card-campaign__date" datetime="2023-06-01">
                                         2023/6/1-9/30
@@ -84,7 +93,7 @@
                 <?php endif; ?>
             </div>
             <div class="archive-campaign__pagenav pagenav">
-            <?php wp_pagenavi(); ?>
+                <?php wp_pagenavi(); ?>
             </div>
         </div>
     </section>
