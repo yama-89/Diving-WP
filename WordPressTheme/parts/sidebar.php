@@ -132,6 +132,51 @@
                 <p class="archive-sub-title__title">アーカイブ</p>
             </div>
             <ul class="side-menu__archive-lists archive-lists">
+                <?php
+                // 年ごとのアーカイブループを開始
+                $year = date('Y'); // 表示する最初の年
+                $end_year = 2010; // 表示する最後の年
+
+                while ($year >= $end_year) {
+                    // 月ごとのアーカイブを取得
+                    $args = array(
+                        'post_type' => 'post',
+                        'posts_per_page' => -1, // すべての記事を取得
+                        'ignore_sticky_posts' => 1,
+                        'year' => $year,
+                    );
+                    $months = new WP_Query($args);
+
+                    if ($months->have_posts()) {
+                        echo '<li class="archive-lists__year js-year">' . $year . '<ul class="archive-lists__list js-month">';
+
+                        $months_array = array();
+
+                        while ($months->have_posts()) {
+                            $months->the_post();
+                            $month = get_the_time('n');
+                            $months_array[$month] = get_the_time('F');
+                        }
+
+                        // 月のアーカイブを表示
+                        for ($i = 12; $i >= 1; $i--) {
+                            if (isset($months_array[$i])) {
+                                echo '<li class="archive-lists__month">';
+                                echo '<a href="' . get_month_link($year, $i) . '">' . esc_html($months_array[$i]) . '</a>';
+                                echo '</li>';
+                            }
+                        }
+
+                        echo '</ul></li>';
+                    }
+
+                    wp_reset_postdata();
+
+                    $year--; // 前の年に移動
+                }
+                ?>
+
+
                 <li class="archive-lists__year js-year">
                     2023
                     <ul class="archive-lists__list js-month">
