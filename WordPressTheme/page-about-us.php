@@ -52,13 +52,27 @@
         <h2 class="section-title__main">フォト</h2>
       </div>
       <div class="gallery__container">
-        <div class="gallery__img">
-          <?php
-          $scf_field = SCF::get('image1');
-          echo wp_get_attachment_image($scf_field, 'full');
-          ?>
-        </div>
-        <div class="gallery__img">
+        <?php
+        $imgGroup = SCF::get('gallery');
+        foreach ($imgGroup as $fields) {
+          $imgurl = wp_get_attachment_image_src($fields['image1'], 'large');
+        ?>
+
+          <div class="gallery__img">
+            <!-- 画像がない時はnoImg画像を表示 -->
+            <?php if ($fields['image1'] === "") { ?>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/noimage.jpg" alt="noimage">
+              <!-- それ以外（画像がある時）画像を表示 -->
+            <?php } else { ?>
+              <img src="<?php echo $imgurl[0]; ?>" alt="img1">
+            <?php
+            }
+            ?>
+
+          </div>
+        <?php } ?>
+
+        <!-- <div class="gallery__img">
           <?php
           $scf_field = SCF::get('image2');
           echo wp_get_attachment_image($scf_field, 'full');
@@ -87,7 +101,7 @@
           $scf_field = SCF::get('image6');
           echo wp_get_attachment_image($scf_field, 'full');
           ?>
-        </div>
+        </div> -->
         <!-- <div class="gallery__img">
           <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery2.jpg" alt="魚" />
         </div>

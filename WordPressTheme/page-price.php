@@ -29,11 +29,11 @@
           if ($fields['title1'] !== "" and $fields['price1'] !== "") {
         ?>
         <div class="page-price-item__item page-price-item__item--left">
-        <?php echo $fields['title1']; ?>
+        <?php echo nl2br($fields['title1']); ?>
           <!-- オープンウォーター<br class="u-mobile" />ダイバーコース -->
         </div>
         <div class="page-price-item__item page-price-item__item--right">
-        <?php echo nl2br($fields['price1']); ?>
+        <?php echo $fields['price1']; ?>
         </div>
       <?php
           }
@@ -47,84 +47,66 @@
           <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
           <h3 class="page-price-item__title">体験ダイビング</h3>
         </div>
+        <?php
+        $free_item = SCF::get('price-page2');
+        foreach ($free_item as $fields) {
+          if ($fields['title2'] !== "" and $fields['price2'] !== "") {
+        ?>
         <div class="page-price-item__item page-price-item__item--left">
-          ビーチ体験ダイビング<br class="u-mobile" />(半日)
+        <?php echo nl2br($fields['title2']); ?>
+          <!-- オープンウォーター<br class="u-mobile" />ダイバーコース -->
         </div>
         <div class="page-price-item__item page-price-item__item--right">
-          ¥7,000
+        <?php echo $fields['price2']; ?>
         </div>
-        <div class="page-price-item__item page-price-item__item--left">
-          ビーチ体験ダイビング<br class="u-mobile" />(1日)
-        </div>
-        <div class="page-price-item__item page-price-item__item--right">
-          ¥14,000
-        </div>
-        <div class="page-price-item__item page-price-item__item--left">
-          ボート体験ダイビング<br class="u-mobile" />(半日)
-        </div>
-        <div class="page-price-item__item page-price-item__item--right">
-          ¥10,000
-        </div>
-        <div class="page-price-item__item page-price-item__item--left">
-          ボート体験ダイビング<br class="u-mobile" />(1日)
-        </div>
-        <div class="page-price-item__item page-price-item__item--right">
-          ¥18,000
-        </div>
+      <?php
+          }
+        }
+        ?>
       </div>
       <div class="page-price__content page-price-item">
         <div class="page-price-item__item page-price-item__header page-price-item__header--4row">
           <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
           <h3 class="page-price-item__title">ファンダイビング</h3>
         </div>
+        <?php
+        $free_item = SCF::get('price-page3');
+        foreach ($free_item as $fields) {
+          if ($fields['title3'] !== "" and $fields['price3'] !== "") {
+        ?>
         <div class="page-price-item__item page-price-item__item--left">
-          ビーチダイビング<br class="u-mobile" />(2ダイブ)
+        <?php echo nl2br($fields['title3']); ?>
+          <!-- オープンウォーター<br class="u-mobile" />ダイバーコース -->
         </div>
         <div class="page-price-item__item page-price-item__item--right">
-          ¥14,000
+        <?php echo $fields['price3']; ?>
         </div>
-        <div class="page-price-item__item page-price-item__item--left">
-          ボートダイビング<br class="u-mobile" />(2ダイブ)
-        </div>
-        <div class="page-price-item__item page-price-item__item--right">
-          ¥18,000
-        </div>
-        <div class="page-price-item__item page-price-item__item--left">
-          スペシャルダイビング<br class="u-mobile" />(2ダイブ)
-        </div>
-        <div class="page-price-item__item page-price-item__item--right">
-          ¥24,000
-        </div>
-        <div class="page-price-item__item page-price-item__item--left">
-          ナイトダイビング<br class="u-mobile" />(1ダイブ)
-        </div>
-        <div class="page-price-item__item page-price-item__item--right">
-          ¥10,000
-        </div>
+      <?php
+          }
+        }
+        ?>
       </div>
       <div class="page-price__content page-price-item">
         <div class="page-price-item__item page-price-item__header">
           <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
           <h3 class="page-price-item__title">スペシャルダイビング</h3>
         </div>
+        <?php
+        $free_item = SCF::get('price-page4');
+        foreach ($free_item as $fields) {
+          if ($fields['title4'] !== "" and $fields['price4'] !== "") {
+        ?>
         <div class="page-price-item__item page-price-item__item--left">
-          貸切ダイビング<br class="u-mobile" />(2ダイブ)
+        <?php echo nl2br($fields['title4']); ?>
+          <!-- オープンウォーター<br class="u-mobile" />ダイバーコース -->
         </div>
         <div class="page-price-item__item page-price-item__item--right">
-          ¥50,000
+        <?php echo $fields['price4']; ?>
         </div>
-        <div class="page-price-item__item page-price-item__item--left">
-          1日ダイビング<br class="u-mobile" />(3ダイブ)
-        </div>
-        <div class="page-price-item__item page-price-item__item--right">
-          ¥60,000
-        </div>
-        <div class="page-price-item__item page-price-item__item--left">
-          ナイトダイビング<br class="u-mobile" />(2ダイブ)
-        </div>
-        <div class="page-price-item__item page-price-item__item--right">
-          ¥70,000
-        </div>
+      <?php
+          }
+        }
+        ?>
       </div>
     </div>
 
