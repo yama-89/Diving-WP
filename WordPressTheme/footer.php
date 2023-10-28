@@ -135,6 +135,9 @@
                                 <li class="nav-items__title">
                                     <a href="./page-contact.html">お問い合わせ</a>
                                 </li>
+                                <li class="nav-items__title">
+                                    <a href="./page-sitemap.html">サイトマップ</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
