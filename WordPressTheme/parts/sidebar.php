@@ -175,17 +175,6 @@
                     $year--; // 前の年に移動
                 }
                 ?>
-
-
-                <li class="archive-lists__year js-year">
-                    2023
-                    <ul class="archive-lists__list js-month">
-                        <li class="archive-lists__month">3月</li>
-                        <li class="archive-lists__month">2月</li>
-                        <li class="archive-lists__month">1月</li>
-                    </ul>
-                </li>
-                <li class="archive-lists__year js-year">2022</li>
             </ul>
         </div>
     </div>
