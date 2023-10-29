@@ -42,7 +42,7 @@
                         <div class="archive-campaign-cards__card card-campaign">
                             <div class="card-campaign__img">
                                 <?php if (has_post_thumbnail()) : ?>
-                                    <?php the_post_thumbnail('full', array('class' => 'card-campaignt__img')); ?>
+                                    <?php the_post_thumbnail('full', array('class' => 'card-campaign__img')); ?>
                                 <?php else : ?>
                                     <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
                                 <?php endif; ?>

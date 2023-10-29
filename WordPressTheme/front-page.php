@@ -6,7 +6,29 @@
     <div class="mv__inner">
       <div class="mv__slider swiper js-mv-swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
+          <?php
+          $slides = SCF::get('mv-slider'); // SCFフィールド名に置き換える
+
+          if ($slides) {
+            foreach ($slides as $slide) {
+              $desktop_image = wp_get_attachment_image_src($slide['pc-mv'], 'large');
+              $mobile_image = wp_get_attachment_image_src($slide['sp-mv'], 'large');
+              // $slide_title = esc_html($slide['MVスライダー']); // タイトルフィールドの名前に置き換える
+
+              if (!empty($desktop_image) && !empty($mobile_image)) {
+          ?>
+                <div class="swiper-slide">
+                  <picture>
+                    <source srcset="<?php echo esc_url($desktop_image[0]); ?>" media="(min-width: 1024px)" />
+                    <img src="<?php echo esc_url($mobile_image[0]); ?>" alt="" />
+                  </picture>
+                </div>
+          <?php
+              }
+            }
+          }
+          ?>
+          <!-- <div class="swiper-slide">
             <picture>
               <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-mv1.jpg" media="(min-width: 1024px)" />
               <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sp-mv1.jpg" alt="mv1" />
@@ -29,7 +51,7 @@
               <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-mv4.jpg" media="(min-width: 1024px)" />
               <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sp-mv4.jpg" alt="mv4" />
             </picture>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="mv__title-wrap">
@@ -48,29 +70,53 @@
       </div>
       <div class="campaign__slider swiper js-campaign-swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide campaign__card">
-            <div class="card-campaign">
-              <div class="card-campaign__img">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/campaign1.jpg" alt="魚が泳いでいる様子" />
-              </div>
-              <div class="card-campaign__body">
-                <div class="card-campaign__title-wrap">
-                  <span class="card-campaign__tag">ライセンス講習</span>
-                  <p class="card-campaign__title">ライセンス取得</p>
-                </div>
-                <div class="card-campaign__price-wrap">
-                  <p class="card-campaign__price-title">
-                    全部コミコミ(お一人様)
-                  </p>
-                  <div class="card-campaign__price-box">
-                    <p class="card-campaign__price-text">¥56,000</p>
-                    <p class="card-campaign__price-subtext">¥46,000</p>
+          <?php
+          $args = array(
+            'post_type' => 'campaign',
+            'posts_per_page' => 8,
+          );
+          $the_query = new WP_Query($args);
+          if ($the_query->have_posts()) :
+          ?>
+            <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+
+              <div class="swiper-slide campaign__card">
+                <div class="card-campaign">
+                  <div class="card-campaign__img">
+                    <?php if (has_post_thumbnail()) : ?>
+                      <?php the_post_thumbnail('full', array('class' => 'card-campaign__img')); ?>
+                    <?php else : ?>
+                      <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
+                    <?php endif; ?>
+                  </div>
+                  <div class="card-campaign__body">
+                    <div class="card-campaign__title-wrap">
+                      <?php
+                      $taxonomy_terms = get_the_terms($post->ID, 'campaign-tag');
+                      if (!empty($taxonomy_terms)) {
+                        foreach ($taxonomy_terms as $taxonomy_term) {
+                          echo '<span class="card-campaign__tag">' . esc_html($taxonomy_term->name) . '</span>';
+                        }
+                      }
+                      ?>
+                      <p class="card-campaign__title"><?php the_title(); ?></p>
+                    </div>
+                    <div class="card-campaign__price-wrap">
+                      <p class="card-campaign__price-title">
+                        全部コミコミ(お一人様)
+                      </p>
+                      <div class="card-campaign__price-box">
+                        <p class="card-campaign__price-text">¥<?php the_field("campaign-price1"); ?></p>
+                        <p class="card-campaign__price-subtext">¥<?php the_field("campaign-price2"); ?></p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="swiper-slide campaign__card">
+          <?php endwhile;
+            wp_reset_postdata();
+          endif; ?>
+          <!-- <div class="swiper-slide campaign__card">
             <div class="card-campaign">
               <div class="card-campaign__img">
                 <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/campaign2.jpg" alt="海の上に船が浮かんでいる様子" />
@@ -135,7 +181,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="swiper-button-next"></div>
@@ -218,22 +264,33 @@
         </h2>
       </div>
       <div class="blog__cards blog-cards">
-        <a href="#" class="blog-cards__card card-blog">
-          <div class="card-blog__container">
-            <div class="card-blog__img">
-              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/card-blog1.jpg" alt="サンゴの様子" />
-            </div>
-            <div class="card-blog__body">
-              <time class="card-blog__date" datetime="2023-11-17">2023.11/17</time>
-              <div class="card-blog__title">ライセンス取得</div>
-              <div class="card-blog__text">
-                ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br />
-                ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
+        <?php
+        $args = array(
+          'post_type' => 'post',
+          'posts_per_page' => 3,
+        );
+        $the_query = new WP_Query($args);
+        if ($the_query->have_posts()) :
+        ?>
+          <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+            <a href="#" class="blog-cards__card card-blog">
+              <div class="card-blog__container">
+                <div class="card-blog__img">
+                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/card-blog1.jpg" alt="サンゴの様子" />
+                </div>
+                <div class="card-blog__body">
+                  <time class="card-blog__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y/m/d'); ?></time>
+                  <div class="card-blog__title"><?php the_title(); ?></div>
+                  <div class="card-blog__text">
+                    <?php the_content(); ?>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </a>
-        <a href="#" class="blog-cards__card card-blog">
+            </a>
+        <?php endwhile;
+          wp_reset_postdata();
+        endif; ?>
+        <!-- <a href="#" class="blog-cards__card card-blog">
           <div class="card-blog__container">
             <div class="card-blog__img">
               <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/card-blog2.jpg" alt="ウミガメが泳いでいる様子" />
@@ -262,8 +319,9 @@
               </div>
             </div>
           </div>
-        </a>
+        </a> -->
       </div>
+
       <div class="blog__btn">
         <a href="./archive-blog.html" class="button">View more<span></span></a>
       </div>
@@ -279,30 +337,54 @@
       </div>
       <div class="voice__container">
         <div class="voice__cards voice-cards">
-          <div class="voice-cards__card card-voice">
-            <div class="card-voice__container">
-              <div class="card-voice__title-box">
-                <div class="card-voice__box">
-                  <div class="card-voice__meta">
-                    <p class="card-voice__age">20代(女性)</p>
-                    <div class="card-voice__tag">ライセンス講習</div>
+          <?php
+          $args = array(
+            'post_type' => 'voice',
+            'posts_per_page' => 2,
+          );
+          $the_query = new WP_Query($args);
+          if ($the_query->have_posts()) :
+          ?>
+            <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+              <div class="voice-cards__card card-voice">
+                <div class="card-voice__container">
+                  <div class="card-voice__title-box">
+                    <div class="card-voice__box">
+                      <div class="card-voice__meta">
+                        <p class="card-voice__age"><?php the_field("voice-age"); ?></p>
+                        <?php
+                        $taxonomy_terms = get_the_terms($post->ID, 'voice-tag');
+                        if (!empty($taxonomy_terms)) {
+                          foreach ($taxonomy_terms as $taxonomy_term) {
+                            echo '<span class="card-voice__tag">' . esc_html($taxonomy_term->name) . '</span>';
+                          }
+                        }
+                        ?>
+                      </div>
+                      <p class="card-voice__title">
+                        <?php the_title(); ?>
+                      </p>
+                    </div>
+                    <div class="card-voice__img js-colorbox">
+                      <?php if (has_post_thumbnail()) : ?>
+                        <?php the_post_thumbnail('full', array('class' => 'card-voice__img')); ?>
+                      <?php else : ?>
+                        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
+                      <?php endif; ?>
+                      <!-- <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sp-card-voice1.jpg" alt="女性の画像" /> -->
+                    </div>
                   </div>
-                  <p class="card-voice__title">
-                    ここにタイトルが入ります。ここにタイトル
+                  <p class="card-voice__text">
+                    <?php the_content(); ?>
+
                   </p>
                 </div>
-                <div class="card-voice__img js-colorbox">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sp-card-voice1.jpg" alt="女性の画像" />
-                </div>
               </div>
-              <p class="card-voice__text">
-                ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br />
-                ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br />
-                ここにテキストが入ります。ここにテキストが入ります。
-              </p>
-            </div>
-          </div>
-          <div class="voice-cards__card card-voice">
+          <?php endwhile;
+            wp_reset_postdata();
+          endif; ?>
+
+          <!-- <div class="voice-cards__card card-voice">
             <div class="card-voice__container">
               <div class="card-voice__title-box">
                 <div class="card-voice__box">
@@ -324,7 +406,7 @@
                 ここにテキストが入ります。ここにテキストが入ります。
               </p>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="voice__btn">
           <a href="./archive-voice.html" class="button">View more<span></span></a>
@@ -343,71 +425,86 @@
         <div class="price__left-side">
           <h3 class="price__items-title">ライセンス講習</h3>
           <dl class="price__items price-item">
-            <div class="price-item__text-box">
-              <dt class="price-item__text">
-                オープンウォーターダイバーコース
-              </dt>
-              <dd class="price-item__price">¥50,000</dd>
-            </div>
-            <div class="price-item__text-box">
-              <dt class="price-item__text">
-                アドバンスドオープンウォーターコース
-              </dt>
-              <dd class="price-item__price">¥60,000</dd>
-            </div>
-            <div class="price-item__text-box">
-              <dt class="price-item__text">レスキュー＋EFRコース</dt>
-              <dd class="price-item__price">¥70,000</dd>
-            </div>
+            <?php
+            $free_items = SCF::get('price-page', 25); // 正しいフィールド名を使用
+            foreach ($free_items as $free_item) :
+              if (!empty($free_item['title1']) && !empty($free_item['price1'])) :
+            ?>
+                <div class="price-item__text-box">
+                  <dt class="price-item__text">
+                    <?php echo ($free_item['title1']); ?>
+                  </dt>
+                  <dd class="price-item__price">
+                    <?php echo $free_item['price1']; ?>
+                  </dd>
+                </div>
+            <?php
+              endif;
+            endforeach;
+            ?>
           </dl>
           <h3 class="price__items-title">体験ダイビング</h3>
           <dl class="price__items price-item">
-            <div class="price-item__text-box">
-              <dt class="price-item__text">ビーチ体験ダイビング(半日)</dt>
-              <dd class="price-item__price">¥7,000</dd>
-            </div>
-            <div class="price-item__text-box">
-              <dt class="price-item__text">ビーチ体験ダイビング(1日)</dt>
-              <dd class="price-item__price">¥14,000</dd>
-            </div>
-            <div class="price-item__text-box">
-              <dt class="price-item__text">ボート体験ダイビング(半日)</dt>
-              <dd class="price-item__price">¥10,000</dd>
-            </div>
-            <div class="price-item__text-box">
-              <dt class="price-item__text">ボート体験ダイビング(1日)</dt>
-              <dd class="price-item__price">¥18,000</dd>
-            </div>
+            <?php
+            $free_items = SCF::get('price-page2', 25); // 正しいフィールド名を使用
+            foreach ($free_items as $free_item) :
+              if (!empty($free_item['title2']) && !empty($free_item['price2'])) :
+            ?>
+                <div class="price-item__text-box">
+                  <dt class="price-item__text">
+                    <?php echo ($free_item['title2']); ?>
+                  </dt>
+                  <dd class="price-item__price">
+                    <?php echo $free_item['price2']; ?>
+                  </dd>
+                </div>
+
+            <?php
+              endif;
+            endforeach;
+            ?>
           </dl>
           <h3 class="price__items-title">ファンダイビング</h3>
           <dl class="price__items price-item">
-            <div class="price-item__text-box">
-              <dt class="price-item__text">ビーチダイビング(2ダイブ)</dt>
-              <dd class="price-item__price">¥14,000</dd>
-            </div>
-            <div class="price-item__text-box">
-              <dt class="price-item__text">ボートダイビング(2ダイブ)</dt>
-              <dd class="price-item__price">¥18,000</dd>
-            </div>
-            <div class="price-item__text-box">
-              <dt class="price-item__text">スペシャルダイビング(2ダイブ)</dt>
-              <dd class="price-item__price">¥24,000</dd>
-            </div>
-            <div class="price-item__text-box">
-              <dt class="price-item__text">ナイトダイビング(1ダイブ)</dt>
-              <dd class="price-item__price">¥10,000</dd>
-            </div>
+          <?php
+            $free_items = SCF::get('price-page3', 25); // 正しいフィールド名を使用
+            foreach ($free_items as $free_item) :
+              if (!empty($free_item['title3']) && !empty($free_item['price3'])) :
+            ?>
+                <div class="price-item__text-box">
+                  <dt class="price-item__text">
+                    <?php echo ($free_item['title3']); ?>
+                  </dt>
+                  <dd class="price-item__price">
+                    <?php echo $free_item['price3']; ?>
+                  </dd>
+                </div>
+
+            <?php
+              endif;
+            endforeach;
+            ?>
           </dl>
           <h3 class="price__items-title">スペシャルダイビング</h3>
           <dl class="price__items price-item">
-            <div class="price-item__text-box">
-              <dt class="price-item__text">貸切ダイビング(2ダイブ)</dt>
-              <dd class="price-item__price">¥24,000</dd>
-            </div>
-            <div class="price-item__text-box">
-              <dt class="price-item__text">1日ダイビング(3ダイブ)</dt>
-              <dd class="price-item__price">¥32,000</dd>
-            </div>
+          <?php
+            $free_items = SCF::get('price-page4', 25); // 正しいフィールド名を使用
+            foreach ($free_items as $free_item) :
+              if (!empty($free_item['title4']) && !empty($free_item['price4'])) :
+            ?>
+                <div class="price-item__text-box">
+                  <dt class="price-item__text">
+                    <?php echo ($free_item['title4']); ?>
+                  </dt>
+                  <dd class="price-item__price">
+                    <?php echo $free_item['price4']; ?>
+                  </dd>
+                </div>
+
+            <?php
+              endif;
+            endforeach;
+            ?>
           </dl>
         </div>
         <div class="price__right-side">
@@ -425,42 +522,6 @@
     </div>
   </section>
 
-  <section id="contact" class="contact top-contact">
-    <div class="contact__inner">
-      <div class="contact__container">
-        <div class="contact__left">
-          <div class="contact__logo-wrap">
-            <div class="contact__logo">
-              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sp-contact-logo.png" alt="logo" />
-            </div>
-          </div>
-          <div class="contact__box">
-            <div class="contact__address">
-              <p class="contact__list">沖縄県那覇市1-1</p>
-              <p class="contact__list">TEL:0120-000-0000</p>
-              <p class="contact__list">営業時間:8:30-19:00</p>
-              <p class="contact__list">定休日:毎週火曜日</p>
-            </div>
-            <div class="contact__map">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4937.814505861781!2d127.67657959485639!3d26.2131729976841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34e56bd6e046d289%3A0x345ffb669fadbd4f!2z6YKj6KaH5biC5b255omA!5e0!3m2!1sja!2sjp!4v1694611120782!5m2!1sja!2sjp" width="600" height="450" style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-          </div>
-        </div>
-        <div class="contact__right">
-          <div class="contact__title section-title section-title--contact">
-            <span>contact</span>
-            <h2 class="section-title__main">
-              お問い合わせ
-            </h2>
-          </div>
-          <div class="contact__text">ご予約・お問い合わせはコチラ</div>
-          <div class="contact__btn">
-            <a href="./page-contact.html" class="button">Contact us<span></span></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <?php get_footer(); ?>

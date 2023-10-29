@@ -197,9 +197,9 @@ function custom_posts_per_page($query)
     }
 
     // トップページの場合は1件だけ表示する
-    if ($query->is_front_page()) {
-        $query->set('posts_per_page', 1);
-    }
+    // if ($query->is_front_page()) {
+    //     $query->set('posts_per_page', 1);
+    // }
 
     // // アーカイブページの場合は10件表示する
     // if ($query->is_archive()) {
