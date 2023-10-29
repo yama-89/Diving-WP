@@ -40,27 +40,36 @@
   padding: 0 rem(30);
   font-size: rem(14);
 }
-.page-contact__check-box p {
-  text-align: left;
-  position: relative;
-  @include mq(md) {
-    text-align: center;
-  }
-}
-.page-contact__check-box p::before {
-  position: absolute;
-  content: "";
-  top: 50%;
-  left: -9%;
-  width: rem(22);
-  height: rem(22);
-  transform: translateY(-50%);
-  background: $base;
-  border: rem(1) solid $black;
-  display: block;
-  @include mq(md) {
-  left: 18%;
+// .page-contact__check-box p {
+//   text-align: left;
+//   position: relative;
+//   @include mq(md) {
+//     text-align: center;
+//   }
+// }
+// .page-contact__check-box p::before {
+//   position: absolute;
+//   content: "";
+//   top: 50%;
+//   left: -9%;
+//   width: rem(22);
+//   height: rem(22);
+//   transform: translateY(-50%);
+//   background: $base;
+//   border: rem(1) solid $black;
+//   display: block;
+//   @include mq(md) {
+//   left: 18%;
 
+//   }
+// }
+
+.page-contact__check-box .wpcf7-list-item-label{
+  margin-inline: auto;
+  width: 100%;
+  text-align: left;
+  @include mq(md) {
+    width: 66%;
   }
 }
 
@@ -70,4 +79,37 @@
   @include mq(md) {
     margin-top: rem(40);
   }
+}
+
+::placeholder {
+  color: $gray2;
+  font-size: rem(16);
+  // letter-spacing: 0.07em;
+  // line-height: calc(25.9 / 14);
+}
+
+
+.wpcf7-spinner {
+  display: none;
+}
+
+.wpcf7-not-valid {
+background-color: $red ;
+opacity: 0.2;
+// border: 1px solid $red;
+}
+
+.wpcf7-not-valid-tip {
+  display: none;
+}
+
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.unaccepted .wpcf7-response-output,
+.wpcf7 form.payment-required .wpcf7-response-output{
+border: none;
+color: $red;
+text-align: center;
+// letter-spacing: rem(2);
+font-size: rem(14);
+
 }

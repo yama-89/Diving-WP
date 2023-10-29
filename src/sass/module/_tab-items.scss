@@ -31,7 +31,8 @@
   cursor: pointer;
 }
 
-.tab-items__item.current a {
+.tab-items__item.current a,
+.tab-items__item .current-all {
   background-color: $black;
   color: $base;
   border: rem(1) solid $black;

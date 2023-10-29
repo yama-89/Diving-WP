@@ -190,23 +190,23 @@ add_theme_support('post-thumbnails');
 
 // ChatGPTから
 
-function custom_posts_per_page($query)
-{
-    if (is_admin() || !$query->is_main_query()) {
-        return;
-    }
+// function custom_posts_per_page($query)
+// {
+//     if (is_admin() || !$query->is_main_query()) {
+//         return;
+//     }
 
-    // トップページの場合は1件だけ表示する
-    // if ($query->is_front_page()) {
-    //     $query->set('posts_per_page', 1);
-    // }
+//     // トップページの場合は1件だけ表示する
+//     // if ($query->is_front_page()) {
+//     //     $query->set('posts_per_page', 1);
+//     // }
 
-    // // アーカイブページの場合は10件表示する
-    // if ($query->is_archive()) {
-    //     $query->set('posts_per_page', 6);
-    // }
-}
-add_action('pre_get_posts', 'custom_posts_per_page');
+//     // // アーカイブページの場合は10件表示する
+//     // if ($query->is_archive()) {
+//     //     $query->set('posts_per_page', 6);
+//     // }
+// }
+// add_action('pre_get_posts', 'custom_posts_per_page');
 
 
 // Contact Form 7で自動挿入されるPタグ、brタグを削除
@@ -242,3 +242,19 @@ function Change_menulabel() {
     }
     add_action( 'init', 'Change_objectlabel' );
     add_action( 'admin_menu', 'Change_menulabel' );
+
+    // Contact Form7の送信ボタンをクリックした後の遷移先設定
+add_action( 'wp_footer', 'add_origin_thanks_page' );
+function add_origin_thanks_page() {
+$thanks = home_url('/thanks/');
+  echo <<< EOC
+    <script>
+      var thanksPage = {
+        172: '{$thanks}',
+      };
+    document.addEventListener( 'wpcf7mailsent', function( event ) {
+      location = thanksPage[event.detail.contactFormId];
+    }, false );
+    </script>
+  EOC;
+}

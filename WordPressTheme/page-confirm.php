@@ -16,6 +16,8 @@
   <?php get_template_part('parts/breadcrumb') ?>
 
 
+  <p class="contact__text">入力内容をご確認ください。</p>
+
   <div class="page-contact layout-page-contact">
     <div class="page-contact__inner inner">
       <!-- <div class="page-contact__form form">

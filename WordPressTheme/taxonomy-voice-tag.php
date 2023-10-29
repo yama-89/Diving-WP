@@ -28,7 +28,7 @@
                     'taxonomy' => $taxonomy,
                     'hide_empty' => false,
                 ]);
-                echo '<span class=tab-items__item><a href="' . esc_url(get_post_type_archive_link('voice')) . '">ALL</a></span>';
+                echo '<span class=tab-items__item><a href="' . esc_url(get_post_type_archive_link('voice') ) . '">ALL</a></span>';
                 foreach ($terms as $term) {
                     $term_link = get_term_link($term, $taxonomy);
                     // タームが選択されているかどうかを判定
@@ -56,21 +56,31 @@
                                 <div class="card-voice__title-box">
                                     <div class="card-voice__box">
                                         <div class="card-voice__meta">
-                                            <p class="card-voice__age">20代(女性)</p>
-                                            <div class="card-voice__tag">ライセンス講習</div>
+                                            <p class="card-voice__age"><?php the_field("voice-age"); ?></p>
+                                            <?php
+                                            $taxonomy_terms = get_the_terms($post->ID, 'voice-tag');
+                                            if (!empty($taxonomy_terms)) {
+                                                foreach ($taxonomy_terms as $taxonomy_term) {
+                                                    echo '<span class="card-voice__tag">' . esc_html($taxonomy_term->name) . '</span>';
+                                                }
+                                            }
+                                            ?>
+                                            <!-- <div class="card-voice__tag">ライセンス講習</div> -->
                                         </div>
                                         <p class="card-voice__title">
-                                            ここにタイトルが入ります。ここにタイトル
+                                            <?php the_title(); ?>
                                         </p>
                                     </div>
                                     <div class="card-voice__img js-colorbox">
-                                        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/card-voice1.jpg" alt="女性の画像" />
+                                        <?php if (has_post_thumbnail()) : ?>
+                                            <?php the_post_thumbnail('full', array('class' => 'card-voice__img')); ?>
+                                        <?php else : ?>
+                                            <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <p class="card-voice__text">
-                                    ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br />
-                                    ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br />
-                                    ここにテキストが入ります。ここにテキストが入ります。
+                                    <?php the_content(); ?>
                                 </p>
                             </div>
                         </div>

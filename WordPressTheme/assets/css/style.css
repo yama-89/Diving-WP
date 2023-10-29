@@ -1247,22 +1247,26 @@ button,
 [type=button],
 [type=submit] {
 	-webkit-text-decoration: none;
-	background: #408F95;
 	background-image: none;
 	border: none;
 	border-radius: 0;
-	border-radius: 0;
+	border-radius: 0; /*↓カスタム */
 	color: #fff;
 	cursor: pointer;
 	display: inline-block;
 	font-size: 0.875rem;
 	line-height: 1; /*↓リセットCSS */
-	margin: 0; /*↓カスタム */
-	padding: 1rem 2.375rem;
+	margin: 0;
 	position: relative;
 	text-decoration: none;
 	transition: 0.3s ease;
 	width: auto;
+}
+
+button:hover,
+[type=button]:hover,
+[type=submit]:hover {
+	color: #408F95;
 }
 
 [type=radio] {
@@ -2199,26 +2203,47 @@ footer {
 	padding: 0 1.875rem;
 }
 
-.page-contact__check-box p {
-	position: relative;
+.page-contact__check-box .wpcf7-list-item-label {
+	margin-left: auto;
+	margin-right: auto;
 	text-align: left;
-}
-
-.page-contact__check-box p::before {
-	background: #fff;
-	border: 0.0625rem solid #408F95;
-	content: "";
-	display: block;
-	height: 1.375rem;
-	left: -9%;
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	width: 1.375rem;
+	width: 100%;
 }
 
 .page-contact__button {
 	margin-top: 1.5rem;
+	text-align: center;
+}
+
+::-moz-placeholder {
+	color: #DDF0F1;
+	font-size: 1rem;
+}
+
+::placeholder {
+	color: #DDF0F1;
+	font-size: 1rem;
+}
+
+.wpcf7-spinner {
+	display: none;
+}
+
+.wpcf7-not-valid {
+	background-color: #C94800;
+	opacity: 0.2;
+}
+
+.wpcf7-not-valid-tip {
+	display: none;
+}
+
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.unaccepted .wpcf7-response-output,
+.wpcf7 form.payment-required .wpcf7-response-output {
+	border: none;
+	color: #C94800;
+	font-size: 0.875rem;
 	text-align: center;
 }
 
@@ -2956,7 +2981,8 @@ footer {
 	width: 100%;
 }
 
-.tab-items__item.current a {
+.tab-items__item.current a,
+.tab-items__item .current-all {
 	background-color: #408F95;
 	border: 0.0625rem solid #408F95;
 	color: #fff;
@@ -3842,12 +3868,8 @@ select {
 	max-width: 46.875rem;
 }
 
-.page-contact__check-box p {
-	text-align: center;
-}
-
-.page-contact__check-box p::before {
-	left: 18%;
+.page-contact__check-box .wpcf7-list-item-label {
+	width: 66%;
 }
 
 .page-contact__button {
