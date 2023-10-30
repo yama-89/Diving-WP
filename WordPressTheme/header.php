@@ -7,12 +7,28 @@
     <meta name="robots" content="noindex" />
     <?php wp_head() ?>
   </head>
+
+<?php 
+$home =esc_url( home_url('/'));
+$campaign =esc_url( home_url('/campaign/'));
+$aboutus =esc_url( home_url('/about-us/'));
+$information =esc_url( home_url('/information/'));
+$blog =esc_url( home_url('/blog/'));
+$voice =esc_url( home_url('/voice/'));
+$price =esc_url( home_url('/price/'));
+$faq =esc_url( home_url('/faq/'));
+$contact =esc_url( home_url('/contact/'));
+$privacypolicy =esc_url( home_url('/privacy-policy/'));
+$termsofservice =esc_url( home_url('/terms-of-service/'));
+$sitemap =esc_url( home_url('/sitemap/'));
+ ?>
+
   <body>
     <!-- ヘッダー -->
     <header class="header js-header">
       <div class="header__inner">
        <h1 class="header__logo">
-          <a href="./index.html"
+          <a href="<?php echo $home; ?>"
             ><img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/header-logo.png" alt="CodeUps"
           /></a>
         </h1>
@@ -29,7 +45,7 @@
                   <div class="nav__box">
                     <ul class="nav-items">
                       <li class="nav-items__title">
-                        <a href="./archive-campaign.html">キャンペーン</a>
+                        <a href="<?php echo $campaign; ?>">キャンペーン</a>
                         <ul class="nav-items__list nav-subitem">
                           <li class="nav-subitem__list">
                             <a href="#">ライセンス取得</a>
@@ -43,14 +59,14 @@
                         </ul>
                       </li>
                       <li class="nav-items__title">
-                        <a href="./page-aboutus.html">私たちについて</a>
+                        <a href="<?php echo $aboutus; ?>">私たちについて</a>
                       </li>
                     </ul>
                   </div>
                   <div class="nav__box">
                     <ul class="nav-items">
                       <li class="nav-items__title">
-                        <a href="./page-information.html">ダイビング情報</a>
+                        <a href="<?php echo $information; ?>">ダイビング情報</a>
                         <ul class="nav-items__list nav-subitem">
                           <li class="nav-subitem__list">
                             <a href="#">ライセンス取得</a>
@@ -64,7 +80,7 @@
                         </ul>
                       </li>
                       <li class="nav-items__title">
-                       <a href="./archive-blog.html">ブログ</a>
+                       <a href="<?php echo $blog; ?>">ブログ</a>
                       </li>
                     </ul>
                   </div>
@@ -73,10 +89,10 @@
                   <div class="nav__box">
                     <ul class="nav-items">
                       <li class="nav-items__title">
-                        <a href="./archive-voice.html">お客様の声</a>
+                        <a href="<?php echo $voice; ?>">お客様の声</a>
                       </li>
                       <li class="nav-items__title">
-                        <a href="./page-price.html">料金一覧</a>
+                        <a href="<?php echo $price; ?>">料金一覧</a>
                         <ul class="nav-items__list nav-subitem">
                           <li class="nav-subitem__list">
                             <a href="#">ライセンス取得</a>
@@ -94,18 +110,18 @@
                   <div class="nav__box">
                     <ul class="nav-items">
                       <li class="nav-items__title">
-                        <a href="./page-faq.html">よくある質問</a>
+                        <a href="<?php echo $faq; ?>">よくある質問</a>
                       </li>
                       <li class="nav-items__title">
-                        <a href="./page-privacypolicy.html"
+                        <a href="<?php echo $privacypolicy; ?>"
                           >プライバシー<br class="u-mobile" />ポリシー</a
                         >
                       </li>
                       <li class="nav-items__title">
-                       <a href="./page-terms-of-service.html">利用規約</a>
+                       <a href="<?php echo $termsofservice; ?>">利用規約</a>
                       </li>
                       <li class="nav-items__title">
-                        <a href="./page-contact.html">お問い合わせ</a>
+                        <a href="<?php echo $contact; ?>">お問い合わせ</a>
                       </li>
                     </ul>
                   </div>
@@ -117,28 +133,28 @@
         <div class="header__pc-nav pc-nav">
           <ul class="pc-nav__items">
             <li class="pc-nav__item">
-              <a href="./archive-campaign.html"
+              <a href="<?php echo $campaign; ?>"
                 ><p class="pc-nav__en">
                   campaign<span class="pc-nav__ja">キャンペーン</span>
                 </p>
               </a>
             </li>
             <li class="pc-nav__item">
-              <a href="./page-aboutus.html"
+              <a href="<?php echo $aboutus; ?>"
                 ><p class="pc-nav__en">
                   About us<span class="pc-nav__ja">私たちについて</span>
                 </p>
               </a>
             </li>
             <li class="pc-nav__item">
-              <a href="./page-information.html"
+              <a href="<?php echo $information; ?>"
                 ><p class="pc-nav__en">
                   Information<span class="pc-nav__ja">ダイビング情報</span>
                 </p>
               </a>
             </li>
             <li class="pc-nav__item">
-              <a href="./archive-blog.html"
+              <a href="<?php echo $blog; ?>"
                 ><p class="pc-nav__en">
                   Blog<span class="pc-nav__ja">ブログ</span>
                 </p>
@@ -146,7 +162,7 @@
             </li>
 
             <li class="pc-nav__item">
-              <a href="./archive-voice.html"
+              <a href="<?php echo $voice; ?>"
                 ><p class="pc-nav__en">
                   Voice<span class="pc-nav__ja">お客様の声</span>
                 </p>
@@ -154,21 +170,21 @@
             </li>
 
             <li class="pc-nav__item">
-              <a href="./page-price.html"
+              <a href="<?php echo $price; ?>"
                 ><p class="pc-nav__en">
                   Price<span class="pc-nav__ja">料金一覧</span>
                 </p>
               </a>
             </li>
             <li class="pc-nav__item">
-              <a href="./page-faq.html"
+              <a href="<?php echo $faq; ?>"
                 ><p class="pc-nav__en">
                   FAQ<span class="pc-nav__ja">よくある質問</span>
                 </p>
               </a>
             </li>
             <li class="pc-nav__item">
-              <a href="./page-contact.html"
+              <a href="<?php echo $contact; ?>"
                 ><p class="pc-nav__en">
                   Contact<span class="pc-nav__ja">お問い合わせ</span>
                 </p>

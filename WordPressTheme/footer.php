@@ -1,3 +1,18 @@
+<?php 
+$home =esc_url( home_url('/'));
+$campaign =esc_url( home_url('/campaign/'));
+$aboutus =esc_url( home_url('/about-us/'));
+$information =esc_url( home_url('/information/'));
+$blog =esc_url( home_url('/blog/'));
+$voice =esc_url( home_url('/voice/'));
+$price =esc_url( home_url('/price/'));
+$faq =esc_url( home_url('/faq/'));
+$contact =esc_url( home_url('/contact/'));
+$privacypolicy =esc_url( home_url('/privacy-policy/'));
+$termsofservice =esc_url( home_url('/terms-of-service/'));
+$sitemap =esc_url( home_url('/sitemap/'));
+ ?>
+
 <?php if (!is_page('contact') && !is_404()) : ?>
     <section id="contact" class="contact top-contact">
         <div class="contact__inner">
@@ -59,7 +74,7 @@
                         <div class="nav__box">
                             <ul class="nav-items">
                                 <li class="nav-items__title">
-                                    <a href="./archive-campaign.html">キャンペーン</a>
+                                    <a href="<?php echo $campaign; ?>">キャンペーン</a>
                                     <ul class="nav-items__list nav-subitem">
                                         <li class="nav-subitem__list">
                                             <a href="#">ライセンス取得</a>
@@ -73,14 +88,14 @@
                                     </ul>
                                 </li>
                                 <li class="nav-items__title">
-                                    <a href="./page-aboutus.html">私たちについて</a>
+                                    <a href="<?php echo $aboutus; ?>">私たちについて</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="nav__box">
                             <ul class="nav-items">
                                 <li class="nav-items__title">
-                                    <a href="./page-information.html">ダイビング情報</a>
+                                    <a href="<?php echo $information; ?>">ダイビング情報</a>
                                     <ul class="nav-items__list nav-subitem">
                                         <li class="nav-subitem__list">
                                             <a href="#">ライセンス取得</a>
@@ -94,7 +109,7 @@
                                     </ul>
                                 </li>
                                 <li class="nav-items__title">
-                                    <a href="./archive-blog.html">ブログ</a>
+                                    <a href="<?php echo $blog; ?>">ブログ</a>
                                 </li>
                             </ul>
                         </div>
@@ -103,10 +118,10 @@
                         <div class="nav__box">
                             <ul class="nav-items">
                                 <li class="nav-items__title">
-                                    <a href="./archive-voice.html">お客様の声</a>
+                                    <a href="<?php echo $voice; ?>">お客様の声</a>
                                 </li>
                                 <li class="nav-items__title">
-                                    <a href="./page-price.html">料金一覧</a>
+                                    <a href="<?php echo $price; ?>">料金一覧</a>
                                     <ul class="nav-items__list nav-subitem">
                                         <li class="nav-subitem__list">
                                             <a href="#">ライセンス取得</a>
@@ -124,19 +139,19 @@
                         <div class="nav__box">
                             <ul class="nav-items">
                                 <li class="nav-items__title">
-                                    <a href="./page-faq.html">よくある質問</a>
+                                    <a href="<?php echo $faq; ?>">よくある質問</a>
                                 </li>
                                 <li class="nav-items__title">
-                                    <a href="./page-privacypolicy.html">プライバシー<br class="u-mobile" />ポリシー</a>
+                                    <a href="<?php echo $privacypolicy; ?>">プライバシー<br class="u-mobile" />ポリシー</a>
                                 </li>
                                 <li class="nav-items__title">
-                                    <a href="./page-terms-of-service.html">利用規約</a>
+                                    <a href="<?php echo $termsofservice; ?>">利用規約</a>
                                 </li>
                                 <li class="nav-items__title">
-                                    <a href="./page-contact.html">お問い合わせ</a>
+                                    <a href="<?php echo $contact; ?>">お問い合わせ</a>
                                 </li>
                                 <li class="nav-items__title">
-                                    <a href="./page-sitemap.html">サイトマップ</a>
+                                    <a href="<?php echo $sitemap; ?>">サイトマップ</a>
                                 </li>
                             </ul>
                         </div>
