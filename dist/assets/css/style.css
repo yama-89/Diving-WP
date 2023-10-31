@@ -762,7 +762,9 @@ a {
 .card-blog-mini__img img {
 	-o-object-fit: cover;
 	aspect-ratio: 121/90;
+	height: 100%;
 	object-fit: cover;
+	width: 100%;
 }
 
 .card-blog-mini__body {
@@ -812,7 +814,9 @@ a {
 .card-blog__img img {
 	-o-object-fit: cover;
 	aspect-ratio: 335/223;
+	height: 100%;
 	object-fit: cover;
+	width: 100%;
 }
 
 .card-blog__body {
@@ -869,7 +873,9 @@ a {
 .card-campaign-mini__img img {
 	-o-object-fit: cover;
 	aspect-ratio: 280/188;
+	height: 100%;
 	object-fit: cover;
+	width: 100%;
 }
 
 .card-campaign-mini__body {
@@ -1091,7 +1097,9 @@ a {
 .card-voice-mini__img img {
 	-o-object-fit: cover;
 	aspect-ratio: 294/218;
+	height: 100%;
 	object-fit: cover;
+	width: 100%;
 }
 
 .card-voice {
@@ -2708,10 +2716,9 @@ footer {
 }
 
 .wp-pagenavi span.current {
-	background-color: #fff;
+	background-color: #408F95;
 	border-color: #408F95;
-	color: #408F95;
-	font-weight: bold;
+	color: #fff;
 }
 
 .wp-pagenavi .previouspostslink,

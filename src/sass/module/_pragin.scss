@@ -26,10 +26,10 @@
   border-color: $black;
 }
 .wp-pagenavi span.current {
-  color: $black;
-  background-color: $base;
+  color: $base;
+  background-color: $black;
   border-color: $black;
-  font-weight: bold;
+  // font-weight: bold;
 }
 
 .wp-pagenavi .previouspostslink,

@@ -16,10 +16,14 @@
             <?php if ($the_query->have_posts()) : ?>
                 <div class="side-menu__blog-cards side-menu-blog-cards">
                     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-                        <a href="#" class="side-menu-blog-cards__card card-blog-mini">
+                        <a href="<?php the_permalink(); ?>" class="side-menu-blog-cards__card card-blog-mini">
                             <div class="card-blog-mini__container">
                                 <div class="card-blog-mini__img">
-                                    <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/card-blog4.jpg" alt="サンゴの様子" />
+                                    <?php if (has_post_thumbnail()) : ?>
+                                        <?php the_post_thumbnail('full'); ?>
+                                    <?php else : ?>
+                                        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
+                                    <?php endif; ?>
                                 </div>
                                 <div class="card-blog-mini__body">
                                     <time class="card-blog-mini__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y/m/d'); ?></time>
@@ -74,7 +78,7 @@
                 <p>記事が投稿されていません</p>
             <?php endif; ?>
             <div class="side-menu__voice-button">
-                <a href="#" class="button">View more<span></span></a>
+                <a href="<?php echo esc_url(home_url("/voice")) ?>" class="button">View more<span></span></a>
             </div>
         </div>
         <div class="side-menu__campaign">
@@ -123,7 +127,7 @@
                 <?php endif; ?>
                 </div>
                 <div class="side-menu__campaign-button">
-                    <a href="#" class="button">View more<span></span></a>
+                    <a href="<?php echo esc_url(home_url("/campaign")) ?>" class="button">View more<span></span></a>
                 </div>
         </div>
 
