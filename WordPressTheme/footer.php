@@ -42,7 +42,7 @@ $sitemap =esc_url( home_url('/sitemap/'));
                     </div>
                     <div class="contact__text">ご予約・お問い合わせはコチラ</div>
                     <div class="contact__btn">
-                        <a href="#" class="button">Contact us<span></span></a>
+                        <a href="<?php echo $contact; ?>" class="button">Contact us<span></span></a>
                     </div>
                 </div>
             </div>
@@ -124,13 +124,16 @@ $sitemap =esc_url( home_url('/sitemap/'));
                                     <a href="<?php echo $price; ?>">料金一覧</a>
                                     <ul class="nav-items__list nav-subitem">
                                         <li class="nav-subitem__list">
-                                            <a href="#">ライセンス取得</a>
+                                            <a href="<?php echo $price; ?>#license">ライセンス取得</a>
                                         </li>
                                         <li class="nav-subitem__list">
-                                            <a href="#">体験ダイビング</a>
+                                            <a href="<?php echo $price; ?>#experience">体験ダイビング</a>
                                         </li>
                                         <li class="nav-subitem__list">
-                                            <a href="#">ファンダイビング</a>
+                                            <a href="<?php echo $price; ?>#fun">ファンダイビング</a>
+                                        </li>
+                                        <li class="nav-subitem__list">
+                                            <a href="<?php echo $price; ?>#special">スペシャルダイビング</a>
                                         </li>
                                     </ul>
                                 </li>

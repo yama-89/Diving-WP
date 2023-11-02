@@ -21,7 +21,7 @@
       <div class="page-price__content page-price-item">
         <div class="page-price-item__item page-price-item__header">
           <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
-          <h3 class="page-price-item__title">ライセンス講習</h3>
+          <h3 class="page-price-item__title" id="license">ライセンス講習</h3>
         </div>
         <?php
         $free_item = SCF::get('price-page');
@@ -45,7 +45,7 @@
       <div class="page-price__content page-price-item">
         <div class="page-price-item__item page-price-item__header page-price-item__header--4row">
           <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
-          <h3 class="page-price-item__title">体験ダイビング</h3>
+          <h3 class="page-price-item__title" id="experience">体験ダイビング</h3>
         </div>
         <?php
         $free_item = SCF::get('price-page2');
@@ -67,7 +67,7 @@
       <div class="page-price__content page-price-item">
         <div class="page-price-item__item page-price-item__header page-price-item__header--4row">
           <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
-          <h3 class="page-price-item__title">ファンダイビング</h3>
+          <h3 class="page-price-item__title" id="fun">ファンダイビング</h3>
         </div>
         <?php
         $free_item = SCF::get('price-page3');
@@ -89,7 +89,7 @@
       <div class="page-price__content page-price-item">
         <div class="page-price-item__item page-price-item__header">
           <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
-          <h3 class="page-price-item__title">スペシャルダイビング</h3>
+          <h3 class="page-price-item__title" id="special">スペシャルダイビング</h3>
         </div>
         <?php
         $free_item = SCF::get('price-page4');

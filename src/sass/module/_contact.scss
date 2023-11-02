@@ -75,7 +75,7 @@
     display: flex;
     margin-top: rem(22);
     text-align: left;
-    gap: rem(21);
+    // gap: rem(21);
   }
 }
 
@@ -83,18 +83,18 @@
   font-size: rem(16);
   line-height: calc(24 / 16);
   font-weight: $regular;
-  width: 100%;
+  width: 85%;
   color: $gray3;
   @include mq(md) {
-    width: calc(146 / 440) * 100%;
-    flex-shrink: 0;
+    // width: calc(146 / 440) * 100%;
+    // flex-shrink: 0;
   }
 }
 
 .contact__list {
   font-family: "Noto Sans Jp";
   @include mq(md) {
-    white-space: nowrap;
+    // white-space: nowrap;
   }
 }
 
@@ -110,7 +110,7 @@
   width: 100%;
   @include mq(md) {
     aspect-ratio: 273/148;
-    width: calc(273 / 440) * 100%;
+    // width: calc(273 / 440) * 100%;
     margin-left: auto;
     margin-top: 0;
   }

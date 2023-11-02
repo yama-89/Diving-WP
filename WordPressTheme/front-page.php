@@ -187,7 +187,7 @@
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
       <div class="campaign__btn">
-        <a href="./archive-campaign.html" class="button">View more<span></span></a>
+        <a href="<?php echo esc_url(home_url("/campaign")) ?>" class="button">View more<span></span></a>
       </div>
     </div>
   </section>
@@ -223,7 +223,7 @@
               ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br />ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
             </p>
             <div class="aboutus__btn">
-              <a href="./page-aboutus.html" class="button">View more<span></span></a>
+              <a href="<?php echo esc_url(home_url("/about-us")) ?>" class="button">View more<span></span></a>
             </div>
           </div>
         </div>
@@ -247,7 +247,7 @@
             当店はダイビングライセンス（Cカード）世界最大の教育機関PADIの「正規店」として店舗登録されています。<br />正規登録店として、安心安全に初めての方でも安心安全にライセンス取得をサポート致します。
           </p>
           <div class="infomation__btn">
-            <a href="./page-information.html" class="button">View more<span></span></a>
+            <a href="<?php echo esc_url(home_url("/information")) ?>" class="button">View more<span></span></a>
           </div>
         </div>
       </div>
@@ -273,10 +273,14 @@
         if ($the_query->have_posts()) :
         ?>
           <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-            <a href="#" class="blog-cards__card card-blog">
+            <a href="<?php the_permalink(); ?>" class="blog-cards__card card-blog">
               <div class="card-blog__container">
                 <div class="card-blog__img">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/card-blog1.jpg" alt="サンゴの様子" />
+                  <?php if (has_post_thumbnail()) : ?>
+                    <?php the_post_thumbnail('full'); ?>
+                  <?php else : ?>
+                    <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
+                  <?php endif; ?>
                 </div>
                 <div class="card-blog__body">
                   <time class="card-blog__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y/m/d'); ?></time>
@@ -323,7 +327,7 @@
       </div>
 
       <div class="blog__btn">
-        <a href="./archive-blog.html" class="button">View more<span></span></a>
+        <a href="<?php echo esc_url(home_url("/blog")) ?>" class="button">View more<span></span></a>
       </div>
     </div>
   </section>
@@ -383,33 +387,9 @@
           <?php endwhile;
             wp_reset_postdata();
           endif; ?>
-
-          <!-- <div class="voice-cards__card card-voice">
-            <div class="card-voice__container">
-              <div class="card-voice__title-box">
-                <div class="card-voice__box">
-                  <div class="card-voice__meta">
-                    <p class="card-voice__age">20代(男性)</p>
-                    <div class="card-voice__tag">ファンダイビング</div>
-                  </div>
-                  <p class="card-voice__title">
-                    ここにタイトルが入ります。ここにタイトル
-                  </p>
-                </div>
-                <div class="card-voice__img js-colorbox">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/card-voice2.jpg" alt="男性の画像" />
-                </div>
-              </div>
-              <p class="card-voice__text">
-                ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br />
-                ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br />
-                ここにテキストが入ります。ここにテキストが入ります。
-              </p>
-            </div>
-          </div> -->
         </div>
         <div class="voice__btn">
-          <a href="./archive-voice.html" class="button">View more<span></span></a>
+          <a href="<?php echo esc_url(home_url("/voice")) ?>" class="button">View more<span></span></a>
         </div>
       </div>
     </div>
@@ -466,7 +446,7 @@
           </dl>
           <h3 class="price__items-title">ファンダイビング</h3>
           <dl class="price__items price-item">
-          <?php
+            <?php
             $free_items = SCF::get('price-page3', 25); // 正しいフィールド名を使用
             foreach ($free_items as $free_item) :
               if (!empty($free_item['title3']) && !empty($free_item['price3'])) :
@@ -487,7 +467,7 @@
           </dl>
           <h3 class="price__items-title">スペシャルダイビング</h3>
           <dl class="price__items price-item">
-          <?php
+            <?php
             $free_items = SCF::get('price-page4', 25); // 正しいフィールド名を使用
             foreach ($free_items as $free_item) :
               if (!empty($free_item['title4']) && !empty($free_item['price4'])) :
@@ -517,7 +497,7 @@
         </div>
       </div>
       <div class="price__btn">
-        <a href="./page-price.html" class="button">View more<span></span></a>
+        <a href="<?php echo esc_url(home_url("/price")) ?>" class="button">View more<span></span></a>
       </div>
     </div>
   </section>

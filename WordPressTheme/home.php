@@ -24,7 +24,6 @@
                         <?php while (have_posts()) : the_post(); ?>
                             <a href="<?php the_permalink(); ?>" class="blog-cards__card card-blog">
                                 <div class="card-blog__container">
-
                                     <div class="card-blog__img">
                                         <?php if (has_post_thumbnail()) : ?>
                                             <?php the_post_thumbnail('full'); ?>
