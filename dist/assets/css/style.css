@@ -16,6 +16,7 @@ body.active {
 
 html {
 	font-size: 16px;
+	scroll-padding-top: 200px;
 }
 
 *,
@@ -1538,6 +1539,7 @@ textarea {
 .faq-item__title-text {
 	color: #fff;
 	font-size: 1rem;
+	padding-right: 1em;
 }
 
 .faq-item__content {
@@ -1549,6 +1551,7 @@ textarea {
 .faq-item__text {
 	color: #0D2936;
 	font-size: 1rem;
+	padding-right: 1em;
 }
 
 .faq-item__title:before,

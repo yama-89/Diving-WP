@@ -154,43 +154,74 @@ jQuery(function ($) {
     $(this).addClass("is-active");
     tabContent.removeClass("is-active");
     tabContent.eq(index).addClass("is-active");
+    return false;
   });
+
+
+ 
+    var hash = location.hash;
+    hash = (hash.match(/^#info-tab\d+$/) || [])[0];
+
+    // リンクにハッシュが入っていればtabnameに格納
+    if ($(hash).length) {
+        var tabname = hash.slice(1);
+    } else {
+        var tabname = "info-tab1";
+    }
+
+    // コンテンツ非表示・タブを非アクティブ
+    $(".page-information__btn").removeClass("is-active");
+    $(".page-information__content").removeClass("is-active");
+
+    // 何番目のタブかを格納
+    var tabno = $(".page-information__content#" + tabname).index();
+
+    // コンテンツ表示
+    $(".page-information__content").eq(tabno).addClass("is-active");
+
+    // タブのアクティブ化
+    $(".page-information__btn").eq(tabno).addClass("is-active");
+
+  
+
+
+
 
   // タブへダイレクトリンクの実装
-  $(document).ready(function () {
-    var hash = window.location.hash;
-    console.log(hash);
-    if (hash) {
-      var tabname = hash.slice(1); // ハッシュから#を取り除いたもの
-      console.log(tabname);
+  // $(document).ready(function () {
+  //   var hash = window.location.hash;
+  //   console.log(hash);
+  //   if (hash) {
+  //     var tabname = hash.slice(1); // ハッシュから#を取り除いたもの
+  //     console.log(tabname);
 
-      var tab = $(".js-content[id='" + tabname + "']");
-      console.log(tab);
-      console.log(tab.length);
-      if (tab.length) {
-        // タブ内のリンクをアクティブ化
-        $(".js-tab").removeClass("is-active");
-        $(".js-tab[href='#" + tabname + "']").addClass("is-active");
-        console.log($(".js-tab[href='#" + tabname + "']"));
+  //     var tab = $(".js-content[id='" + tabname + "']");
+  //     console.log(tab);
+  //     console.log(tab.length);
+  //     if (tab.length) {
+  //       // タブ内のリンクをアクティブ化
+  //       $(".js-tab").removeClass("is-active");
+  //       $(".js-tab[href='#" + tabname + "']").addClass("is-active");
+  //       console.log($(".js-tab[href='#" + tabname + "']"));
 
-        // タブコンテンツを表示
-        $(".js-content").removeClass("is-active");
-        tab.addClass("is-active");
-      }
-    }
-  });
+  //       // タブコンテンツを表示
+  //       $(".js-content").removeClass("is-active");
+  //       tab.addClass("is-active");
+  //     }
+  //   }
+  // });
 
-  // フッターのリンクがクリックされたときの処理
-  $(".nav-subitem__list a").on("click", function () {
-    var targetHash = $(this).attr("href"); // クリックされたリンクのハッシュを取得
-    // console.log(targetHash);
-    // クリックされたタブをアクティブにし、そのタブのコンテンツを表示
-    $(".js-tab").removeClass("is-active");
-    $(".js-content").removeClass("is-active");
-    $(targetHash).addClass("is-active");
-    $(".js-tab[href='" + targetHash + "']").addClass("is-active");
-    // console.log($(".js-tab[href='" + targetHash + "']"));
-  });
+  // // フッターのリンクがクリックされたときの処理
+  // $(".nav-subitem__list a").on("click", function () {
+  //   var targetHash = $(this).attr("href"); // クリックされたリンクのハッシュを取得
+  //   // console.log(targetHash);
+  //   // クリックされたタブをアクティブにし、そのタブのコンテンツを表示
+  //   $(".js-tab").removeClass("is-active");
+  //   $(".js-content").removeClass("is-active");
+  //   $(targetHash).addClass("is-active");
+  //   $(".js-tab[href='" + targetHash + "']").addClass("is-active");
+  //   // console.log($(".js-tab[href='" + targetHash + "']"));
+  // });
 
   // //タブへダイレクトリンクの実装
   // //リンクからハッシュを取得

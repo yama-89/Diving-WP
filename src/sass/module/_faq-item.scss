@@ -19,6 +19,7 @@
 .faq-item__title-text {
   color: $base;
   font-size: rem(16);
+  padding-right: 1em;
   @include mq(md) {
     font-size: rem(20);
   }
@@ -37,6 +38,7 @@
 .faq-item__text {
   font-size: rem(16);
   color: $gray3;
+  padding-right: 1em;
 }
 
 .faq-item__title:before,

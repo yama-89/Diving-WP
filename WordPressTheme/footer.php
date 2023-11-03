@@ -98,13 +98,13 @@ $sitemap =esc_url( home_url('/sitemap/'));
                                     <a href="<?php echo $information; ?>">ダイビング情報</a>
                                     <ul class="nav-items__list nav-subitem">
                                         <li class="nav-subitem__list">
-                                            <a href="#">ライセンス講習</a>
+                                            <a href="<?php echo esc_url(home_url("information#info-tab1")) ?>">ライセンス講習</a>
                                         </li>
                                         <li class="nav-subitem__list">
-                                            <a href="#">ファンダイビング</a>
+                                            <a href="<?php echo esc_url(home_url("information#info-tab2")) ?>">ファンダイビング</a>
                                         </li>
                                         <li class="nav-subitem__list">
-                                            <a href="#">体験ダイビング</a>
+                                            <a href="<?php echo esc_url(home_url("information#info-tab3")) ?>">体験ダイビング</a>
                                         </li>
                                     </ul>
                                 </li>

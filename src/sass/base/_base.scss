@@ -4,6 +4,7 @@
 @if $startFrom == sp {
   //スマホファースト
   html {
+    scroll-padding-top: 200px;
     //~375px
     @media (max-width: 375px) {
       font-size: vw(375, 16);

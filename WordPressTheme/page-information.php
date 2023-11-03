@@ -22,14 +22,14 @@
       <section class="page-information layout-page-information">
         <div class="page-information__inner inner">
           <div class="page-information__btn-wrap">
-            <a href="#info-tab1" class="page-information__btn tab-button js-tab is-active"
-              >ライセンス<br class="u-mobile"/>講習</a
+            <div id="#info-tab1" class="page-information__btn tab-button js-tab is-active"
+              >ライセンス<br class="u-mobile"/>講習</div
             >
-            <a href="#info-tab2" class="page-information__btn tab-button tab-button--center js-tab"
-              >ファン<br class="u-mobile"/>ダイビング</a
+            <div id="#info-tab2" class="page-information__btn tab-button tab-button--center js-tab"
+              >ファン<br class="u-mobile"/>ダイビング</div
             >
-            <a href="#info-tab3" class="page-information__btn tab-button js-tab"
-              >体験<br class="u-mobile"/>ダイビング</a
+            <div id="#info-tab3" class="page-information__btn tab-button js-tab"
+              >体験<br class="u-mobile"/>ダイビング</div
             >
           </div>
           <div class="page-information__container">
