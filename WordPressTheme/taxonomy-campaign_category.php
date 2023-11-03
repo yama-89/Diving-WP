@@ -23,7 +23,7 @@
         <div class="archive-campaign__tab tab-items">
 
         <?php
-            $taxonomy = 'campaign-tag'; // タクソノミースラッグを指定
+            $taxonomy = 'campaign_category'; // タクソノミースラッグを指定
             $terms = get_terms([
                 'taxonomy' => $taxonomy,
                 'hide_empty' => false,
@@ -42,12 +42,6 @@
             }
             ?>
         </div>
-
-                <!-- <li class="tab-items__item current"><a href="">ALL</a></li>
-                <li class="tab-items__item"><a href="">ライセンス講習</a></li>
-                <li class="tab-items__item"><a href="">ファンダイビング</a></li>
-                <li class="tab-items__item"><a href="">体験ダイビング</a></li>
-            </ul> -->
             <div class="archive-campaign__cards archive-campaign-cards">
                 <?php if (have_posts()) : ?>
                     <?php while (have_posts()) : the_post(); ?>
@@ -62,7 +56,7 @@
                             <div class="card-campaign__body card-campaign__body--campaign">
                                 <div class="card-campaign__title-wrap">
                                     <?php
-                                    $taxonomy_terms = get_the_terms($post->ID, 'campaign-tag');
+                                    $taxonomy_terms = get_the_terms($post->ID, 'campaign_category');
                                     if (!empty($taxonomy_terms)) {
                                         foreach ($taxonomy_terms as $taxonomy_term) {
                                             echo '<span class="card-campaign__tag">' . esc_html($taxonomy_term->name) . '</span>';

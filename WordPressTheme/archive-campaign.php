@@ -23,7 +23,7 @@
 
             <div class="archive-campaign__tab tab-items">
             <?php
-            $taxonomy = 'campaign-tag'; // タクソノミースラッグを指定
+            $taxonomy = 'campaign_category'; // タクソノミースラッグを指定
             $terms = get_terms([
                 'taxonomy' => $taxonomy,
                 'hide_empty' => false,
@@ -50,7 +50,7 @@
                             <div class="card-campaign__body card-campaign__body--campaign">
                                 <div class="card-campaign__title-wrap">
                                     <?php
-                                    $taxonomy_terms = get_the_terms($post->ID, 'campaign-tag');
+                                    $taxonomy_terms = get_the_terms($post->ID, 'campaign_category');
                                     if (!empty($taxonomy_terms)) {
                                         foreach ($taxonomy_terms as $taxonomy_term) {
                                             echo '<span class="card-campaign__tag">' . esc_html($taxonomy_term->name) . '</span>';
@@ -82,7 +82,7 @@
                                         ご予約・お問い合わせはコチラ
                                     </p>
                                     <div class="card-campaign__btn">
-                                        <a href="./page-contact.html" class="button">Contact us<span></span></a>
+                                        <a href="<?php echo esc_url(home_url("/contact")) ?>" class="button">Contact us<span></span></a>
                                     </div>
                                 </div>
                             </div>

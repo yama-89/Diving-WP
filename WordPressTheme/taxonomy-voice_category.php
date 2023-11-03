@@ -23,7 +23,7 @@
             <div class="archive-campaign__tab tab-items">
 
                 <?php
-                $taxonomy = 'voice-tag'; // タクソノミースラッグを指定
+                $taxonomy = 'voice_category'; // タクソノミースラッグを指定
                 $terms = get_terms([
                     'taxonomy' => $taxonomy,
                     'hide_empty' => false,
@@ -58,7 +58,7 @@
                                         <div class="card-voice__meta">
                                             <p class="card-voice__age"><?php the_field("voice-age"); ?></p>
                                             <?php
-                                            $taxonomy_terms = get_the_terms($post->ID, 'voice-tag');
+                                            $taxonomy_terms = get_the_terms($post->ID, 'voice_category');
                                             if (!empty($taxonomy_terms)) {
                                                 foreach ($taxonomy_terms as $taxonomy_term) {
                                                     echo '<span class="card-voice__tag">' . esc_html($taxonomy_term->name) . '</span>';

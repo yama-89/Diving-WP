@@ -77,13 +77,13 @@ $sitemap =esc_url( home_url('/sitemap/'));
                                     <a href="<?php echo $campaign; ?>">キャンペーン</a>
                                     <ul class="nav-items__list nav-subitem">
                                         <li class="nav-subitem__list">
-                                            <a href="#">ライセンス取得</a>
+                                            <a href="<?php echo esc_url(home_url("/campaign_category/tag1")) ?>">ライセンス講習</a>
                                         </li>
                                         <li class="nav-subitem__list">
-                                            <a href="#">貸切体験ダイビング</a>
+                                            <a href="<?php echo esc_url(home_url("/campaign_category/tag3")) ?>">体験ダイビング</a>
                                         </li>
                                         <li class="nav-subitem__list">
-                                            <a href="#">ナイトダイビング</a>
+                                            <a href="<?php echo esc_url(home_url("/campaign_category/tag2")) ?>">ファンダイビング</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -98,7 +98,7 @@ $sitemap =esc_url( home_url('/sitemap/'));
                                     <a href="<?php echo $information; ?>">ダイビング情報</a>
                                     <ul class="nav-items__list nav-subitem">
                                         <li class="nav-subitem__list">
-                                            <a href="#">ライセンス取得</a>
+                                            <a href="#">ライセンス講習</a>
                                         </li>
                                         <li class="nav-subitem__list">
                                             <a href="#">ファンダイビング</a>

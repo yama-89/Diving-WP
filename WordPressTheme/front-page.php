@@ -92,7 +92,7 @@
                   <div class="card-campaign__body">
                     <div class="card-campaign__title-wrap">
                       <?php
-                      $taxonomy_terms = get_the_terms($post->ID, 'campaign-tag');
+                      $taxonomy_terms = get_the_terms($post->ID, 'campaign_category');
                       if (!empty($taxonomy_terms)) {
                         foreach ($taxonomy_terms as $taxonomy_term) {
                           echo '<span class="card-campaign__tag">' . esc_html($taxonomy_term->name) . '</span>';
@@ -357,7 +357,7 @@
                       <div class="card-voice__meta">
                         <p class="card-voice__age"><?php the_field("voice-age"); ?></p>
                         <?php
-                        $taxonomy_terms = get_the_terms($post->ID, 'voice-tag');
+                        $taxonomy_terms = get_the_terms($post->ID, 'voice_category');
                         if (!empty($taxonomy_terms)) {
                           foreach ($taxonomy_terms as $taxonomy_term) {
                             echo '<span class="card-voice__tag">' . esc_html($taxonomy_term->name) . '</span>';
