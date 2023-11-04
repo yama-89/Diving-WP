@@ -97,7 +97,11 @@
                     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
                         <div class="side-menu__campaign-card card-campaign-mini">
                             <div class="card-campaign-mini__img">
-                                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/campaign1.jpg" alt="クラゲが泳いでいる様子" />
+                            <?php if (has_post_thumbnail()) : ?>
+                                        <?php the_post_thumbnail('full'); ?>
+                                    <?php else : ?>
+                                        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
+                                    <?php endif; ?>
                             </div>
                             <div class="card-campaign-mini__body">
                                 <div class="card-campaign-mini__title-wrap">
