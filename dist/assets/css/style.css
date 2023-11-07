@@ -2725,6 +2725,10 @@ footer {
 	margin: 0 2.5rem;
 }
 
+.wp-pagenavi .larger:nth-child(n+5) {
+	display: none;
+}
+
 .price-item__text-box {
 	display: flex;
 	margin-top: 0.5rem;
@@ -3999,6 +4003,10 @@ select {
 }
 
 .pc-nav {
+	display: block;
+}
+
+.wp-pagenavi .larger:nth-child(n+5) {
 	display: block;
 }
 

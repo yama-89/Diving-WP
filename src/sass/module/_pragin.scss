@@ -38,3 +38,9 @@
   margin: 0 rem(40);
 }
 
+.wp-pagenavi .larger:nth-child(n+5) {
+  display: none;
+  @include mq(md){
+  display: block;
+  }
+}
