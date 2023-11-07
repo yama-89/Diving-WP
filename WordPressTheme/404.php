@@ -16,7 +16,7 @@
           </p>
         </div>
         <div class="page-404__btn">
-          <a href="#" class="button button--reverse">Page TOP<span></span></a>
+          <a href="<?php echo esc_url(home_url("/")) ?>" class="button button--reverse">Page TOP<span></span></a>
         </div>
       </section>
 

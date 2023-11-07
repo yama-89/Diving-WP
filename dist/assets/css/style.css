@@ -838,13 +838,9 @@ a {
 }
 
 .card-blog__text {
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 5;
-	display: -webkit-box;
 	font-size: 1rem;
 	line-height: 1.5;
 	margin-top: 1rem;
-	overflow: hidden;
 }
 
 .card-blog__price-box {
@@ -3928,7 +3924,7 @@ select {
 .page-price-item__header {
 	flex-direction: column-reverse;
 	grid-column: 1; /* 1列目に配置 */
-	grid-row: span 3; /* 3行に結合 */
+	grid-row: 1/8; /* 結合 */
 }
 
 .page-price-item__header img {

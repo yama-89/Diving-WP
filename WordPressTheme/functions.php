@@ -166,19 +166,36 @@ function my_excerpt_more($more)
 add_filter('excerpt_more', 'my_excerpt_more');
 
 
-// カスタム投稿表示件数
 function change_posts_per_page($query)
 {
     if (is_admin() || !$query->is_main_query())
         return;
-    if ($query->is_post_type_archive('campaign')) { //カスタム投稿タイプを指定
-        $query->set('posts_per_page', '4'); //表示件数を指定
+    if ($query->is_post_type_archive('campaign')) { // カスタム投稿タイプ 'campaign' の場合
+        $query->set('posts_per_page', 4); // 'campaign' の表示件数を4に設定
     }
-    if ($query->is_post_type_archive('voice')) { //カスタム投稿タイプを指定
-        $query->set('posts_per_page', '6'); //表示件数を指定
+    if ($query->is_post_type_archive('voice')) { // カスタム投稿タイプ 'voice' の場合
+        $query->set('posts_per_page', 6); // 'voice' の表示件数を6に設定
     }
 }
+
+function custom_taxonomy_archive_items_per_page( $query ) {
+    if ( is_tax( 'campaign_category' ) ) { // タクソノミー 'campaign_category' の場合
+        $query->set( 'posts_per_page', 4 ); // 'campaign_category' の表示件数を4に設定
+    }
+    if ( is_tax( 'voice_category' ) ) { // タクソノミー 'voice_category' の場合
+        $query->set( 'posts_per_page', 6 ); // 'voice_category' の表示件数を6に設定
+    }
+
+    // 他のタクソノミーに対する条件も同様に追加できます
+
+    // メインクエリーかつタクソノミーページの場合に適用
+    if ( $query->is_main_query() && is_tax() ) {
+        return;
+    }
+}
+
 add_action('pre_get_posts', 'change_posts_per_page');
+add_action('pre_get_posts', 'custom_taxonomy_archive_items_per_page');
 
 
 

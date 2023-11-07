@@ -64,7 +64,7 @@
   min-height: initial;
   @include mq(md) {
     flex-direction: column-reverse;
-    grid-row: span 3; /* 3行に結合 */
+    grid-row: 1/8; /* 結合 */
     grid-column: 1; /* 1列目に配置 */
   }
 }

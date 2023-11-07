@@ -65,8 +65,8 @@ $sitemap =esc_url( home_url('/sitemap/'));
                         <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/footer-logo.png" alt="logo" />
                     </div>
                     <div class="nav__icon">
-                        <a href="#" class="nav__facebook"><img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/facebook-icon.png" alt="facebook-icon" /></a>
-                        <a href="#" class="nav__instagram"><img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/instagram-icon.png" alt="instagram-icon" /></a>
+                        <a href="https://www.facebook.com" target=”_blank” class="nav__facebook"><img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/facebook-icon.png" alt="facebook-icon" /></a>
+                        <a href="https://www.instagram.com" target=”_blank” class="nav__instagram"><img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/instagram-icon.png" alt="instagram-icon" /></a>
                     </div>
                 </div>
                 <div class="nav__lists">

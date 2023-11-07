@@ -286,7 +286,7 @@
                   <time class="card-blog__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y/m/d'); ?></time>
                   <div class="card-blog__title"><?php the_title(); ?></div>
                   <div class="card-blog__text">
-                    <?php the_content(); ?>
+                  <?php echo wp_trim_words( get_the_content(), 80 ); ?>
                   </div>
                 </div>
               </div>
