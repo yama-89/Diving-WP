@@ -35,7 +35,7 @@
                                         <time class="card-blog__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y/m/d'); ?></time>
                                         <div class="card-blog__title"><?php the_title(); ?></div>
                                         <div class="card-blog__text">
-                                        <?php echo wp_trim_words( get_the_content(), 80 ); ?>
+                                            <?php echo wp_trim_words(get_the_content(), 80); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                     <?php wp_pagenavi(); ?>
                 </div>
             </div>
-            <?php get_template_part('parts/sidebar') ?>
+            <?php get_sidebar(); ?>
         </div>
     </section>
 </main>

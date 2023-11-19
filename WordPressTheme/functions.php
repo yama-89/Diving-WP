@@ -205,25 +205,7 @@ add_theme_support('post-thumbnails');
 
 
 
-// ChatGPTから
 
-// function custom_posts_per_page($query)
-// {
-//     if (is_admin() || !$query->is_main_query()) {
-//         return;
-//     }
-
-//     // トップページの場合は1件だけ表示する
-//     // if ($query->is_front_page()) {
-//     //     $query->set('posts_per_page', 1);
-//     // }
-
-//     // // アーカイブページの場合は10件表示する
-//     // if ($query->is_archive()) {
-//     //     $query->set('posts_per_page', 6);
-//     // }
-// }
-// add_action('pre_get_posts', 'custom_posts_per_page');
 
 
 // Contact Form 7で自動挿入されるPタグ、brタグを削除

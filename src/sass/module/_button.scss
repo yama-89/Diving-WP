@@ -68,7 +68,7 @@
 .button span::after {
   position: absolute;
   content: url(../images/common/button-w.svg);
-  top: 0;
+  top: rem(-6);
   left: rem(8);
 }
 

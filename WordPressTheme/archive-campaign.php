@@ -22,19 +22,19 @@
         <div class="archive-campaign__inner inner">
 
             <div class="archive-campaign__tab tab-items">
-            <?php
-            $taxonomy = 'campaign_category'; // タクソノミースラッグを指定
-            $terms = get_terms([
-                'taxonomy' => $taxonomy,
-                'hide_empty' => false,
-            ]);
-            $all_link = esc_url(get_post_type_archive_link('campaign'));
-            echo '<span class=tab-items__item current><a href="' . $all_link . '" class="current-all">ALL</a></span>';
-            foreach ($terms as $term) {
-                $term_link = get_term_link($term, $taxonomy);
-                echo '<span class=tab-items__item><a href="' . esc_url($term_link) . '">' . esc_html($term->name) . '</a></span>';
-            }
-            ?>
+                <?php
+                $taxonomy = 'campaign_category'; // タクソノミースラッグを指定
+                $terms = get_terms([
+                    'taxonomy' => $taxonomy,
+                    'hide_empty' => false,
+                ]);
+                $all_link = esc_url(get_post_type_archive_link('campaign'));
+                echo '<span class=tab-items__item current><a href="' . $all_link . '" class="current-all">ALL</a></span>';
+                foreach ($terms as $term) {
+                    $term_link = get_term_link($term, $taxonomy);
+                    echo '<span class=tab-items__item><a href="' . esc_url($term_link) . '">' . esc_html($term->name) . '</a></span>';
+                }
+                ?>
             </div>
             <div class="archive-campaign__cards archive-campaign-cards">
                 <?php if (have_posts()) : ?>
@@ -42,7 +42,7 @@
                         <div class="archive-campaign-cards__card card-campaign">
                             <div class="card-campaign__img">
                                 <?php if (has_post_thumbnail()) : ?>
-                                    <?php the_post_thumbnail('full', array('class' => 'card-campaign__img')); ?>
+                                    <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="card-campaign__img"/>
                                 <?php else : ?>
                                     <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
                                 <?php endif; ?>
@@ -67,16 +67,29 @@
                                         全部コミコミ(お一人様)
                                     </p>
                                     <div class="card-campaign__price-box card-campaign__price-box--campaign">
-                                        <p class="card-campaign__price-text">¥<?php the_field("campaign-price1"); ?></p>
-                                        <p class="card-campaign__price-subtext">¥<?php the_field("campaign-price2"); ?></p>
+                                        <?php if (get_field('campaign-price1')) : ?>
+                                            <p class="card-campaign__price-text">¥
+                                                <?php the_field("campaign-price1"); ?>
+                                            </p>
+                                        <?php endif; ?>
+                                        <?php if (get_field('campaign-price2')) : ?>
+                                            <p class="card-campaign__price-subtext">
+                                                ¥<?php the_field("campaign-price2"); ?>
+                                            </p>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="card-campaign__text-box">
                                     <p class="card-campaign__text">
-                                    <?php the_content(); ?>
+                                        <?php the_content(); ?>
                                     </p>
                                     <time class="card-campaign__date" datetime="2023-06-01">
-                                        2023/6/1-9/30
+                                        <?php if (get_field('campaign-date1')) : ?>
+                                            <?php the_field("campaign-date1"); ?>
+                                        <?php endif; ?>
+                                        -<?php if (get_field('campaign-date1')) : ?>
+                                        <?php the_field("campaign-date2"); ?>
+                                         <?php endif; ?>
                                     </time>
                                     <p class="card-campaign__contact">
                                         ご予約・お問い合わせはコチラ

@@ -41,7 +41,11 @@
                 <div class="card-voice__title-box">
                   <div class="card-voice__box">
                     <div class="card-voice__meta">
-                      <p class="card-voice__age"><?php the_field("voice-age"); ?></p>
+                      <?php if (get_field('voice-age')) : ?>
+                        <p class="card-voice__age">
+                          <?php the_field("voice-age"); ?>
+                        </p>
+                      <?php endif; ?>
                       <?php
                       $taxonomy_terms = get_the_terms($post->ID, 'voice_category');
                       if (!empty($taxonomy_terms)) {
@@ -50,7 +54,6 @@
                         }
                       }
                       ?>
-                      <!-- <div class="card-voice__tag">ライセンス講習</div> -->
                     </div>
                     <p class="card-voice__title">
                       <?php the_title(); ?>
@@ -58,7 +61,7 @@
                   </div>
                   <div class="card-voice__img js-colorbox">
                     <?php if (has_post_thumbnail()) : ?>
-                      <?php the_post_thumbnail('full', array('class' => 'card-voice__img')); ?>
+                      <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="card-voice__img"/>
                     <?php else : ?>
                       <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
                     <?php endif; ?>

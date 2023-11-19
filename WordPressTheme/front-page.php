@@ -9,13 +9,13 @@
           <?php
           $slides = SCF::get('mv-slider'); // SCFフィールド名に置き換える
 
-          if ($slides) {
-            foreach ($slides as $slide) {
+          if ($slides) :
+            foreach ($slides as $slide) :
               $desktop_image = wp_get_attachment_image_src($slide['pc-mv'], 'large');
               $mobile_image = wp_get_attachment_image_src($slide['sp-mv'], 'large');
               // $slide_title = esc_html($slide['MVスライダー']); // タイトルフィールドの名前に置き換える
 
-              if (!empty($desktop_image) && !empty($mobile_image)) {
+              if (!empty($desktop_image) && !empty($mobile_image)) :
           ?>
                 <div class="swiper-slide">
                   <picture>
@@ -23,35 +23,9 @@
                     <img src="<?php echo esc_url($mobile_image[0]); ?>" alt="" />
                   </picture>
                 </div>
-          <?php
-              }
-            }
-          }
+          <?php endif; endforeach;
+            endif;
           ?>
-          <!-- <div class="swiper-slide">
-            <picture>
-              <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-mv1.jpg" media="(min-width: 1024px)" />
-              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sp-mv1.jpg" alt="mv1" />
-            </picture>
-          </div>
-          <div class="swiper-slide">
-            <picture>
-              <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-mv2.jpg" media="(min-width: 1024px)" />
-              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sp-mv2.jpg" alt="mv2" />
-            </picture>
-          </div>
-          <div class="swiper-slide mv__slide">
-            <picture>
-              <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-mv3.jpg" media="(min-width: 1024px)" />
-              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sp-mv3.jpg" alt="mv3" />
-            </picture>
-          </div>
-          <div class="swiper-slide">
-            <picture>
-              <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-mv4.jpg" media="(min-width: 1024px)" />
-              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sp-mv4.jpg" alt="mv4" />
-            </picture>
-          </div> -->
         </div>
       </div>
       <div class="mv__title-wrap">
@@ -84,7 +58,7 @@
                 <div class="card-campaign">
                   <div class="card-campaign__img">
                     <?php if (has_post_thumbnail()) : ?>
-                      <?php the_post_thumbnail('full', array('class' => 'card-campaign__img')); ?>
+                      <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="card-campaign__img" />
                     <?php else : ?>
                       <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
                     <?php endif; ?>
@@ -106,8 +80,16 @@
                         全部コミコミ(お一人様)
                       </p>
                       <div class="card-campaign__price-box">
-                        <p class="card-campaign__price-text">¥<?php the_field("campaign-price1"); ?></p>
-                        <p class="card-campaign__price-subtext">¥<?php the_field("campaign-price2"); ?></p>
+                        <?php if (get_field('campaign-price1')) : ?>
+                          <p class="card-campaign__price-text">
+                            ¥<?php the_field("campaign-price1"); ?>
+                          </p>
+                        <?php endif; ?>
+                        <?php if (get_field('campaign-price2')) : ?>
+                          <p class="card-campaign__price-subtext">
+                            ¥<?php the_field("campaign-price2"); ?>
+                          </p>
+                        <?php endif; ?>
                       </div>
                     </div>
                   </div>
@@ -116,72 +98,6 @@
           <?php endwhile;
             wp_reset_postdata();
           endif; ?>
-          <!-- <div class="swiper-slide campaign__card">
-            <div class="card-campaign">
-              <div class="card-campaign__img">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/campaign2.jpg" alt="海の上に船が浮かんでいる様子" />
-              </div>
-              <div class="card-campaign__body">
-                <div class="card-campaign__title-wrap">
-                  <span class="card-campaign__tag">体験ダイビング</span>
-                  <p class="card-campaign__title">貸切体験ダイビング</p>
-                </div>
-                <div class="card-campaign__price-wrap">
-                  <p class="card-campaign__price-title">
-                    全部コミコミ(お一人様)
-                  </p>
-                  <div class="card-campaign__price-box">
-                    <p class="card-campaign__price-text">¥24,000</p>
-                    <p class="card-campaign__price-subtext">¥18,000</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide campaign__card">
-            <div class="card-campaign">
-              <div class="card-campaign__img">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/campaign3.jpg" alt="クラゲが泳いでいる様子" />
-              </div>
-              <div class="card-campaign__body">
-                <div class="card-campaign__title-wrap">
-                  <span class="card-campaign__tag">体験ダイビング</span>
-                  <p class="card-campaign__title">ナイトダイビング</p>
-                </div>
-                <div class="card-campaign__price-wrap">
-                  <p class="card-campaign__price-title">
-                    全部コミコミ(お一人様)
-                  </p>
-                  <div class="card-campaign__price-box">
-                    <p class="card-campaign__price-text">¥10,000</p>
-                    <p class="card-campaign__price-subtext">¥8,000</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="card-campaign">
-              <div class="card-campaign__img">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/campaign4.jpg" alt="ダイバーが海面で話している様子" />
-              </div>
-              <div class="card-campaign__body">
-                <div class="card-campaign__title-wrap">
-                  <span class="card-campaign__tag">ファンダイビング</span>
-                  <p class="card-campaign__title">貸切ファンダイビング</p>
-                </div>
-                <div class="card-campaign__price-wrap">
-                  <p class="card-campaign__price-title">
-                    全部コミコミ(お一人様)
-                  </p>
-                  <div class="card-campaign__price-box">
-                    <p class="card-campaign__price-text">¥20,000</p>
-                    <p class="card-campaign__price-subtext">¥16,000</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
       <div class="swiper-button-next"></div>
@@ -286,7 +202,7 @@
                   <time class="card-blog__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y/m/d'); ?></time>
                   <div class="card-blog__title"><?php the_title(); ?></div>
                   <div class="card-blog__text">
-                  <?php echo wp_trim_words( get_the_content(), 80 ); ?>
+                    <?php echo wp_trim_words(get_the_content(), 80); ?>
                   </div>
                 </div>
               </div>
@@ -294,36 +210,6 @@
         <?php endwhile;
           wp_reset_postdata();
         endif; ?>
-        <!-- <a href="#" class="blog-cards__card card-blog">
-          <div class="card-blog__container">
-            <div class="card-blog__img">
-              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/card-blog2.jpg" alt="ウミガメが泳いでいる様子" />
-            </div>
-            <div class="card-blog__body">
-              <time class="card-blog__date" datetime="2023-11-17">2023.11/17</time>
-              <div class="card-blog__title">ウミガメと泳ぐ</div>
-              <div class="card-blog__text">
-                ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br />
-                ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
-              </div>
-            </div>
-          </div>
-        </a>
-        <a href="#" class="blog-cards__card card-blog">
-          <div class="card-blog__container">
-            <div class="card-blog__img">
-              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/card-blog3.jpg" alt="カクレクマノミの画像" />
-            </div>
-            <div class="card-blog__body">
-              <time class="card-blog__date" datetime="2023-11-17">2023.11/17</time>
-              <div class="card-blog__title">カクレクマノミ</div>
-              <div class="card-blog__text">
-                ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br />
-                ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
-              </div>
-            </div>
-          </div>
-        </a> -->
       </div>
 
       <div class="blog__btn">
@@ -355,7 +241,11 @@
                   <div class="card-voice__title-box">
                     <div class="card-voice__box">
                       <div class="card-voice__meta">
-                        <p class="card-voice__age"><?php the_field("voice-age"); ?></p>
+                        <?php if (get_field('voice-age')) : ?>
+                          <p class="card-voice__age">
+                            <?php the_field("voice-age"); ?>
+                          </p>
+                        <?php endif; ?>
                         <?php
                         $taxonomy_terms = get_the_terms($post->ID, 'voice_category');
                         if (!empty($taxonomy_terms)) {
@@ -371,7 +261,7 @@
                     </div>
                     <div class="card-voice__img js-colorbox">
                       <?php if (has_post_thumbnail()) : ?>
-                        <?php the_post_thumbnail('full', array('class' => 'card-voice__img')); ?>
+                        <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="card-voice__img" />
                       <?php else : ?>
                         <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
                       <?php endif; ?>
@@ -480,7 +370,6 @@
                     <?php echo $free_item['price4']; ?>
                   </dd>
                 </div>
-
             <?php
               endif;
             endforeach;

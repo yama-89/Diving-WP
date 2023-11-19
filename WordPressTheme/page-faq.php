@@ -26,8 +26,8 @@
         <div class="page-faq__inner inner">
         <?php
         $free_item = SCF::get('FAQ');
-        foreach ($free_item as $fields) {
-          if ($fields['title'] !== "" and $fields['text'] !== "") {
+        foreach ($free_item as $fields) :
+          if ($fields['title'] !== "" and $fields['text'] !== "") :
         ?>
           <div class="page-faq__item faq-item">
             <div class="faq-item__title js-faq-item__title">
@@ -41,10 +41,7 @@
               </p>
             </div>
           </div>
-          <?php
-          }
-        }
-        ?>
+          <?php endif; endforeach;?>
 
 
         </div>

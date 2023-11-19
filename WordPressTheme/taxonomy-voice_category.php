@@ -28,7 +28,7 @@
                     'taxonomy' => $taxonomy,
                     'hide_empty' => false,
                 ]);
-                echo '<span class=tab-items__item><a href="' . esc_url(get_post_type_archive_link('voice') ) . '">ALL</a></span>';
+                echo '<span class=tab-items__item><a href="' . esc_url(get_post_type_archive_link('voice')) . '">ALL</a></span>';
                 foreach ($terms as $term) {
                     $term_link = get_term_link($term, $taxonomy);
                     // タームが選択されているかどうかを判定
@@ -43,11 +43,7 @@
                 ?>
             </div>
 
-            <!-- <li class="tab-items__item current"><a href="">ALL</a></li>
-                <li class="tab-items__item"><a href="">ライセンス講習</a></li>
-                <li class="tab-items__item"><a href="">ファンダイビング</a></li>
-                <li class="tab-items__item"><a href="">体験ダイビング</a></li>
-            </ul> -->
+            
             <div class="archive-voice__cards voice-cards">
                 <?php if (have_posts()) : ?>
                     <?php while (have_posts()) : the_post(); ?>
@@ -56,7 +52,11 @@
                                 <div class="card-voice__title-box">
                                     <div class="card-voice__box">
                                         <div class="card-voice__meta">
-                                            <p class="card-voice__age"><?php the_field("voice-age"); ?></p>
+                                            <?php if (get_field('voice-age')) : ?>
+                                                <p class="card-voice__age">
+                                                    <?php the_field("voice-age"); ?>
+                                                </p>
+                                            <?php endif; ?>
                                             <?php
                                             $taxonomy_terms = get_the_terms($post->ID, 'voice_category');
                                             if (!empty($taxonomy_terms)) {
@@ -65,7 +65,6 @@
                                                 }
                                             }
                                             ?>
-                                            <!-- <div class="card-voice__tag">ライセンス講習</div> -->
                                         </div>
                                         <p class="card-voice__title">
                                             <?php the_title(); ?>
@@ -73,7 +72,7 @@
                                     </div>
                                     <div class="card-voice__img js-colorbox">
                                         <?php if (has_post_thumbnail()) : ?>
-                                            <?php the_post_thumbnail('full', array('class' => 'card-voice__img')); ?>
+                                            <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="card-voice__img"/>
                                         <?php else : ?>
                                             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
                                         <?php endif; ?>

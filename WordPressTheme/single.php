@@ -25,7 +25,7 @@
               <time class="blog-content__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y/m/d'); ?></time>
               <h2><?php the_title(); ?></h2>
               <?php if (has_post_thumbnail()) : ?>
-                <?php the_post_thumbnail('full', array('class' => 'blog-content__img')); ?>
+                <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="blog-content__img"/>
               <?php else : ?>
                 <img class="blog-content__img" src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
               <?php endif; ?>
@@ -51,7 +51,7 @@
               </div>
             </div>
       </div>
-      <?php get_template_part('parts/sidebar') ?>
+      <?php get_sidebar(); ?>
     </div>
   </section>
 </main>

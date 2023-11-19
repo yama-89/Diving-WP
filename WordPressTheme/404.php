@@ -5,7 +5,7 @@
 
     <main>
 
-    <?php get_template_part('parts/breadcrumb') ?>
+      <?php get_template_part('parts/breadcrumb') ?>
 
 
       <section class="page-404 top-page-404">

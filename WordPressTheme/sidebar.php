@@ -61,12 +61,16 @@
                         <div class="card-voice-mini__container">
                             <div class="card-voice-mini__img">
                                 <?php if (has_post_thumbnail()) : ?>
-                                    <?php the_post_thumbnail('full', array('class' => 'card-campaign__img')); ?>
+                                    <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="card-campaign__img" />
                                 <?php else : ?>
                                     <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
                                 <?php endif; ?>
                             </div>
-                            <p class="card-voice-mini__age"><?php the_field("voice-age"); ?></p>
+                            <?php if (get_field('voice-age')) : ?>
+                                <p class="card-voice-mini__age">
+                                    <?php the_field("voice-age"); ?>
+                                </p>
+                            <?php endif; ?>
                             <p class="card-voice-mini__title">
                                 <?php the_title(); ?>
                             </p>
@@ -97,11 +101,11 @@
                     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
                         <div class="side-menu__campaign-card card-campaign-mini">
                             <div class="card-campaign-mini__img">
-                            <?php if (has_post_thumbnail()) : ?>
-                                        <?php the_post_thumbnail('full'); ?>
-                                    <?php else : ?>
-                                        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
-                                    <?php endif; ?>
+                                <?php if (has_post_thumbnail()) : ?>
+                                    <?php the_post_thumbnail('full'); ?>
+                                <?php else : ?>
+                                    <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
+                                <?php endif; ?>
                             </div>
                             <div class="card-campaign-mini__body">
                                 <div class="card-campaign-mini__title-wrap">
@@ -114,12 +118,16 @@
                                         全部コミコミ(お一人様)
                                     </p>
                                     <div class="card-campaign-mini__price-box">
-                                        <p class="card-campaign-mini__price-text">
-                                            ¥<?php the_field("campaign-price1"); ?>
-                                        </p>
-                                        <p class="card-campaign-mini__price-subtext">
-                                            ¥<?php the_field("campaign-price2"); ?>
-                                        </p>
+                                        <?php if (get_field('campaign-price1')) : ?>
+                                            <p class="card-campaign-mini__price-text">
+                                                ¥<?php the_field("campaign-price1"); ?>
+                                            </p>
+                                        <?php endif; ?>
+                                        <?php if (get_field('campaign-price2')) : ?>
+                                            <p class="card-campaign-mini__price-subtext">
+                                                ¥<?php the_field("campaign-price2"); ?>
+                                            </p>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>

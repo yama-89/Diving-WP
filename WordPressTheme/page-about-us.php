@@ -54,69 +54,19 @@
       <div class="gallery__container">
         <?php
         $imgGroup = SCF::get('gallery');
-        foreach ($imgGroup as $fields) {
+        foreach ($imgGroup as $fields) :
           $imgurl = wp_get_attachment_image_src($fields['image1'], 'large');
         ?>
-
           <div class="gallery__img">
             <!-- 画像がない時はnoImg画像を表示 -->
-            <?php if ($fields['image1'] === "") { ?>
+            <?php if ($fields['image1'] === "") : ?>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/noimage.jpg" alt="noimage">
               <!-- それ以外（画像がある時）画像を表示 -->
-            <?php } else { ?>
+            <?php else : ?>
               <img src="<?php echo $imgurl[0]; ?>" alt="img1">
-            <?php
-            }
-            ?>
-
+            <?php endif; ?>
           </div>
-        <?php } ?>
-
-        <!-- <div class="gallery__img">
-          <?php
-          $scf_field = SCF::get('image2');
-          echo wp_get_attachment_image($scf_field, 'full');
-          ?>
-        </div>
-        <div class="gallery__img">
-          <?php
-          $scf_field = SCF::get('image3');
-          echo wp_get_attachment_image($scf_field, 'full');
-          ?>
-        </div>
-        <div class="gallery__img">
-          <?php
-          $scf_field = SCF::get('image4');
-          echo wp_get_attachment_image($scf_field, 'full');
-          ?>
-        </div>
-        <div class="gallery__img">
-          <?php
-          $scf_field = SCF::get('image5');
-          echo wp_get_attachment_image($scf_field, 'full');
-          ?>
-        </div>
-        <div class="gallery__img">
-          <?php
-          $scf_field = SCF::get('image6');
-          echo wp_get_attachment_image($scf_field, 'full');
-          ?>
-        </div> -->
-        <!-- <div class="gallery__img">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery2.jpg" alt="魚" />
-        </div>
-        <div class="gallery__img">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery3.jpg" alt="魚" />
-        </div>
-        <div class="gallery__img">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery4.jpg" alt="魚" />
-        </div>
-        <div class="gallery__img">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery5.jpg" alt="魚" />
-        </div>
-        <div class="gallery__img">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/gallery6.jpg" alt="魚" />
-        </div> -->
+        <?php endforeach; ?>
       </div>
     </div>
     <div id="grayDisplay" class="gallery__modal grayDisplay"></div>
