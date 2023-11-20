@@ -97,7 +97,7 @@
                                         ご予約・お問い合わせはコチラ
                                     </p>
                                     <div class="card-campaign__btn">
-                                        <a href="./page-contact.html" class="button">Contact us<span></span></a>
+                                        <a href="<?php echo esc_url(home_url("/contact")) ?>" class="button">Contact us<span></span></a>
                                     </div>
                                 </div>
                             </div>

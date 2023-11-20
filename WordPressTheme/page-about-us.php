@@ -45,30 +45,32 @@
     </div>
   </section>
 
-  <section class="gallery layout-gallery">
-    <div class="gallery__inner inner">
-      <div class="gallery__title section-title">
-        <span>gallery</span>
-        <h2 class="section-title__main">フォト</h2>
-      </div>
-      <div class="gallery__container">
-        <?php
-        $imgGroup = SCF::get('gallery');
-        foreach ($imgGroup as $fields) :
-          $imgurl = wp_get_attachment_image_src($fields['image1'], 'large');
-        ?>
-          <div class="gallery__img">
-            <!-- 画像がない時はnoImg画像を表示 -->
-            <?php if ($fields['image1'] === "") : ?>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/noimage.jpg" alt="noimage">
-              <!-- それ以外（画像がある時）画像を表示 -->
-            <?php else : ?>
-              <img src="<?php echo $imgurl[0]; ?>" alt="img1">
+
+  <?php $imgGroup = SCF::get('gallery'); ?>
+
+  <?php if ($imgGroup[0]["image1"]) : ?>
+    <section class="gallery layout-gallery">
+      <div class="gallery__inner inner">
+        <div class="gallery__title section-title">
+          <span>gallery</span>
+          <h2 class="section-title__main">フォト</h2>
+        </div>
+        <div class="gallery__container">
+          <?php
+          foreach ($imgGroup as $fields) :
+            $imgurl = wp_get_attachment_image_src($fields['image1'], 'large');
+
+            // $imgurl が配列であり、かつ要素が存在することを確認する
+            if (is_array($imgurl) && isset($imgurl[0])) :
+          ?>
+              <div class="gallery__img">
+                <img src="<?php echo $imgurl[0]; ?>" alt="img1">
+              </div>
             <?php endif; ?>
-          </div>
-        <?php endforeach; ?>
+          <?php endforeach; ?>
+        </div>
       </div>
-    </div>
-    <div id="grayDisplay" class="gallery__modal grayDisplay"></div>
-  </section>
+      <div id="grayDisplay" class="gallery__modal grayDisplay"></div>
+    </section>
+  <?php endif; ?>
   <?php get_footer(); ?>
