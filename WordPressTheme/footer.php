@@ -1,17 +1,17 @@
-<?php 
-$home =esc_url( home_url('/'));
-$campaign =esc_url( home_url('/campaign/'));
-$aboutus =esc_url( home_url('/about-us/'));
-$information =esc_url( home_url('/information/'));
-$blog =esc_url( home_url('/blog/'));
-$voice =esc_url( home_url('/voice/'));
-$price =esc_url( home_url('/price/'));
-$faq =esc_url( home_url('/faq/'));
-$contact =esc_url( home_url('/contact/'));
-$privacypolicy =esc_url( home_url('/privacy-policy/'));
-$termsofservice =esc_url( home_url('/terms-of-service/'));
-$sitemap =esc_url( home_url('/sitemap/'));
- ?>
+<?php
+$home = esc_url(home_url('/'));
+$campaign = esc_url(home_url('/campaign/'));
+$aboutus = esc_url(home_url('/about-us/'));
+$information = esc_url(home_url('/information/'));
+$blog = esc_url(home_url('/blog/'));
+$voice = esc_url(home_url('/voice/'));
+$price = esc_url(home_url('/price/'));
+$faq = esc_url(home_url('/faq/'));
+$contact = esc_url(home_url('/contact/'));
+$privacypolicy = esc_url(home_url('/privacy-policy/'));
+$termsofservice = esc_url(home_url('/terms-of-service/'));
+$sitemap = esc_url(home_url('/sitemap/'));
+?>
 
 <?php if (!is_page('contact') && !is_404()) : ?>
     <section id="contact" class="contact top-contact">
@@ -163,7 +163,7 @@ $sitemap =esc_url( home_url('/sitemap/'));
             </div>
         </div>
         <small class="footer__copyright">
-        Copyright&copy;2021&nbsp;-&nbsp;2023&nbsp;CodeUps&nbsp;LLC.&nbsp;All&nbsp;Rights&nbsp;Reserved.</small>
+            Copyright&copy;2021&nbsp;-&nbsp;2023&nbsp;CodeUps&nbsp;LLC.&nbsp;All&nbsp;Rights&nbsp;Reserved.</small>
     </div>
 </footer>
 <?php wp_footer() ?>

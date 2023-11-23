@@ -20,8 +20,6 @@
 
   <div class="page-contact layout-page-contact">
     <div class="page-contact__inner inner">
-      <!-- <div class="page-contact__form form">
-      </div> -->
       <?php echo do_shortcode('[contact-form-7 id="cefd48d" title="お問い合わせ"]'); ?>
     </div>
   </div>

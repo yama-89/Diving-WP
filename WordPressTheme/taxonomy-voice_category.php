@@ -43,7 +43,7 @@
                 ?>
             </div>
 
-            
+
             <div class="archive-voice__cards voice-cards">
                 <?php if (have_posts()) : ?>
                     <?php while (have_posts()) : the_post(); ?>
@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="card-voice__img js-colorbox">
                                         <?php if (has_post_thumbnail()) : ?>
-                                            <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="card-voice__img"/>
+                                            <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="card-voice__img" />
                                         <?php else : ?>
                                             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
                                         <?php endif; ?>

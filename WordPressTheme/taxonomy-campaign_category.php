@@ -48,7 +48,7 @@
                         <div class="archive-campaign-cards__card card-campaign">
                             <div class="card-campaign__img">
                                 <?php if (has_post_thumbnail()) : ?>
-                                    <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="card-campaign__img"/>
+                                    <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="card-campaign__img" />
                                 <?php else : ?>
                                     <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
                                 <?php endif; ?>
@@ -87,11 +87,15 @@
                                 </div>
                                 <div class="card-campaign__text-box">
                                     <p class="card-campaign__text">
-                                        ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
-                                        ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
+                                        <?php the_content(); ?>
                                     </p>
                                     <time class="card-campaign__date" datetime="2023-06-01">
-                                        2023/6/1-9/30
+                                        <?php if (get_field('campaign-date1')) : ?>
+                                            <?php the_field("campaign-date1"); ?>
+                                        <?php endif; ?>
+                                        -<?php if (get_field('campaign-date1')) : ?>
+                                        <?php the_field("campaign-date2"); ?>
+                                    <?php endif; ?>
                                     </time>
                                     <p class="card-campaign__contact">
                                         ご予約・お問い合わせはコチラ
