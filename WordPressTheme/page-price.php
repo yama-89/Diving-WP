@@ -19,20 +19,8 @@
   <section class="page-price layout-page-price">
     <div class="page-price__inner inner">
 
-      <?php
-      $free_item = SCF::get('price-page');
-      // カスタムフィールドが空であるかどうかのフラグ
-      $isEmpty = true;
-      foreach ($free_item as $fields) {
-        if (!empty($fields['title1']) || !empty($fields['price1'])) {
-          // カスタムフィールドが空でない場合はフラグを立てる
-          $isEmpty = false;
-          break;
-        }
-      }
-      // カスタムフィールドが空でない場合に表示
-      if (!$isEmpty) :
-      ?>
+      <?php $free_item = SCF::get('price-page'); ?>
+      <?php if ($free_item[0]["title1"]) : ?>
         <div class="page-price__content page-price-item">
           <div class="page-price-item__item page-price-item__header">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
@@ -52,20 +40,8 @@
       <?php endif; ?>
 
 
-      <?php
-      $free_item = SCF::get('price-page2');
-      // カスタムフィールドが空であるかどうかのフラグ
-      $isEmpty = true;
-      foreach ($free_item as $fields) {
-        if (!empty($fields['title2']) || !empty($fields['price2'])) {
-          // カスタムフィールドが空でない場合はフラグを立てる
-          $isEmpty = false;
-          break;
-        }
-      }
-      // カスタムフィールドが空でない場合に表示
-      if (!$isEmpty) :
-      ?>
+      <?php $free_item = SCF::get('price-page2'); ?>
+      <?php if ($free_item[0]["title2"]) : ?>
         <div class="page-price__content page-price-item">
           <div class="page-price-item__item page-price-item__header">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
@@ -84,20 +60,8 @@
         </div>
       <?php endif; ?>
 
-      <?php
-      $free_item = SCF::get('price-page3');
-      // カスタムフィールドが空であるかどうかのフラグ
-      $isEmpty = true;
-      foreach ($free_item as $fields) {
-        if (!empty($fields['title3']) || !empty($fields['price3'])) {
-          // カスタムフィールドが空でない場合はフラグを立てる
-          $isEmpty = false;
-          break;
-        }
-      }
-      // カスタムフィールドが空でない場合に表示
-      if (!$isEmpty) :
-      ?>
+      <?php $free_item = SCF::get('price-page3'); ?>
+      <?php if ($free_item[0]["title3"]) : ?>
         <div class="page-price__content page-price-item">
           <div class="page-price-item__item page-price-item__header">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
@@ -116,20 +80,8 @@
         </div>
       <?php endif; ?>
 
-      <?php
-      $free_item = SCF::get('price-page4');
-      // カスタムフィールドが空であるかどうかのフラグ
-      $isEmpty = true;
-      foreach ($free_item as $fields) {
-        if (!empty($fields['title4']) || !empty($fields['price4'])) {
-          // カスタムフィールドが空でない場合はフラグを立てる
-          $isEmpty = false;
-          break;
-        }
-      }
-      // カスタムフィールドが空でない場合に表示
-      if (!$isEmpty) :
-      ?>
+      <?php $free_item = SCF::get('price-page4'); ?>
+        <?php if ($free_item[0]["title4"]): ?>
         <div class="page-price__content page-price-item">
           <div class="page-price-item__item page-price-item__header">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
