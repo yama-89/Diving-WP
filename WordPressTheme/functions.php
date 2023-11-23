@@ -199,8 +199,6 @@ add_action('pre_get_posts', 'custom_taxonomy_archive_items_per_page');
 
 
 
-// アイキャッチ画像を有効にする。
-add_theme_support('post-thumbnails');
 
 
 

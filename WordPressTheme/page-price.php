@@ -69,7 +69,7 @@
         <div class="page-price__content page-price-item">
           <div class="page-price-item__item page-price-item__header">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
-            <h3 class="page-price-item__title" id="license">体験ダイビング</h3>
+            <h3 class="page-price-item__title" id="experience">体験ダイビング</h3>
           </div>
           <?php foreach ($free_item as $fields) : ?>
             <?php if (!empty($fields['title2']) || !empty($fields['price2'])) : ?>
@@ -101,7 +101,7 @@
         <div class="page-price__content page-price-item">
           <div class="page-price-item__item page-price-item__header">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
-            <h3 class="page-price-item__title" id="license">ファンダイビング</h3>
+            <h3 class="page-price-item__title" id="fun">ファンダイビング</h3>
           </div>
           <?php foreach ($free_item as $fields) : ?>
             <?php if (!empty($fields['title3']) || !empty($fields['price3'])) : ?>
@@ -133,7 +133,7 @@
         <div class="page-price__content page-price-item">
           <div class="page-price-item__item page-price-item__header">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
-            <h3 class="page-price-item__title" id="license">スペシャルダイビング</h3>
+            <h3 class="page-price-item__title" id="special">スペシャルダイビング</h3>
           </div>
           <?php foreach ($free_item as $fields) : ?>
             <?php if (!empty($fields['title4']) || !empty($fields['price4'])) : ?>
