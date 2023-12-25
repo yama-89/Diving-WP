@@ -42,7 +42,7 @@
                         <div class="archive-campaign-cards__card card-campaign">
                             <div class="card-campaign__img">
                                 <?php if (has_post_thumbnail()) : ?>
-                                    <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="card-campaign__img"/>
+                                    <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="card-campaign__img" />
                                 <?php else : ?>
                                     <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
                                 <?php endif; ?>
@@ -62,42 +62,44 @@
                                         <?php the_title(); ?>
                                     </p>
                                 </div>
-                                <div class="card-campaign__price-wrap">
-                                    <p class="card-campaign__price-title">
-                                        全部コミコミ(お一人様)
-                                    </p>
-                                    <div class="card-campaign__price-box card-campaign__price-box--campaign">
-                                        <?php if (get_field('campaign-price1')) : ?>
+                                <?php
+                                $campaignPrice = get_field('campaign-price');
+                                if ($campaignPrice) : ?>
+                                    <div class="card-campaign__price-wrap">
+                                        <p class="card-campaign__price-title">
+                                            <?php echo $campaignPrice["campaign-priceTitle"]; ?>
+                                        </p>
+                                        <div class="card-campaign__price-box card-campaign__price-box--campaign">
                                             <p class="card-campaign__price-text">¥
-                                                <?php the_field("campaign-price1"); ?>
+                                                <?php echo $campaignPrice["campaign-price1"]; ?>
                                             </p>
-                                        <?php endif; ?>
-                                        <?php if (get_field('campaign-price2')) : ?>
                                             <p class="card-campaign__price-subtext">
-                                                ¥<?php the_field("campaign-price2"); ?>
+                                                ¥<?php echo $campaignPrice["campaign-price2"]; ?>
                                             </p>
-                                        <?php endif; ?>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="card-campaign__text-box">
-                                    <p class="card-campaign__text">
-                                        <?php the_content(); ?>
-                                    </p>
-                                    <time class="card-campaign__date" datetime="2023-06-01">
-                                        <?php if (get_field('campaign-date1')) : ?>
-                                            <?php the_field("campaign-date1"); ?>
-                                        <?php endif; ?>
-                                        -<?php if (get_field('campaign-date1')) : ?>
-                                        <?php the_field("campaign-date2"); ?>
-                                         <?php endif; ?>
-                                    </time>
-                                    <p class="card-campaign__contact">
-                                        ご予約・お問い合わせはコチラ
-                                    </p>
-                                    <div class="card-campaign__btn">
-                                        <a href="<?php echo esc_url(home_url("/contact")) ?>" class="button">Contact us<span></span></a>
+                                <?php endif; ?>
+                                <?php
+                                $campaignContent = get_field('campaign-content');
+                                if ($campaignContent) : ?>
+                                    <div class="card-campaign__text-box">
+                                        <p class="card-campaign__text">
+                                            <?php echo $campaignContent["campaign-text"]; ?>
+                                        </p>
+                                        <time class="card-campaign__date" datetime="2023-06-01">
+                                            <?php echo $campaignContent["campaign-date1"]; ?>
+                                            -
+                                            <?php echo $campaignContent["campaign-date2"]; ?>
+
+                                        </time>
+                                        <p class="card-campaign__contact">
+                                            ご予約・お問い合わせはコチラ
+                                        </p>
+                                        <div class="card-campaign__btn">
+                                            <a href="<?php echo esc_url(home_url("/contact")) ?>" class="button">Contact us<span></span></a>
+                                        </div>
                                     </div>
-                                </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     <?php endwhile; ?>

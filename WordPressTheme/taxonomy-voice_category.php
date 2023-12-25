@@ -16,8 +16,6 @@
 
     <?php get_template_part('parts/breadcrumb') ?>
 
-
-
     <section class="archive-campaign layout-archive-campaign">
         <div class="archive-campaign__inner inner">
             <div class="archive-campaign__tab tab-items">
@@ -51,21 +49,24 @@
                             <div class="card-voice__container">
                                 <div class="card-voice__title-box">
                                     <div class="card-voice__box">
-                                        <div class="card-voice__meta">
-                                            <?php if (get_field('voice-age')) : ?>
+                                        <?php
+                                        $voiceAge = get_field('voice-age2');
+                                        if ($voiceAge) : ?>
+                                            <div class="card-voice__meta">
                                                 <p class="card-voice__age">
-                                                    <?php the_field("voice-age"); ?>
+                                                    <?php echo $voiceAge["age"]; ?>代
+                                                    （<?php echo $voiceAge["gender"]; ?>）
                                                 </p>
-                                            <?php endif; ?>
-                                            <?php
-                                            $taxonomy_terms = get_the_terms($post->ID, 'voice_category');
-                                            if (!empty($taxonomy_terms)) {
-                                                foreach ($taxonomy_terms as $taxonomy_term) {
-                                                    echo '<span class="card-voice__tag">' . esc_html($taxonomy_term->name) . '</span>';
+                                                <?php
+                                                $taxonomy_terms = get_the_terms($post->ID, 'voice_category');
+                                                if (!empty($taxonomy_terms)) {
+                                                    foreach ($taxonomy_terms as $taxonomy_term) {
+                                                        echo '<span class="card-voice__tag">' . esc_html($taxonomy_term->name) . '</span>';
+                                                    }
                                                 }
-                                            }
-                                            ?>
-                                        </div>
+                                                ?>
+                                            </div>
+                                        <?php endif; ?>
                                         <p class="card-voice__title">
                                             <?php the_title(); ?>
                                         </p>
@@ -79,7 +80,8 @@
                                     </div>
                                 </div>
                                 <p class="card-voice__text">
-                                    <?php the_content(); ?>
+                                <?php the_field('voice'); ?>
+
                                 </p>
                             </div>
                         </div>

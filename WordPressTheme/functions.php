@@ -255,3 +255,9 @@ $thanks = home_url('/thanks/');
     </script>
   EOC;
 }
+
+//campaignとvoiceのエディターを無効化
+add_action( 'init', function() { 
+	remove_post_type_support( 'campaign', 'editor' ); 
+	remove_post_type_support( 'voice', 'editor' ); 
+}, 99);

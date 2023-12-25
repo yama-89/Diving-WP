@@ -25,7 +25,11 @@
                             <a href="<?php the_permalink(); ?>" class="blog-cards__card card-blog">
                                 <div class="card-blog__container">
                                     <div class="card-blog__img">
-                                        <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/card-blog1.jpg" alt="サンゴの様子" />
+                                        <?php if (has_post_thumbnail()) : ?>
+                                            <?php the_post_thumbnail('full'); ?>
+                                        <?php else : ?>
+                                            <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/noimage.jpg" alt="NoImage画像" />
+                                        <?php endif; ?>
                                     </div>
                                     <div class="card-blog__body">
                                         <time class="card-blog__date" datetime="<?php the_time('c'); ?>"><?php the_time('Y/m/d'); ?></time>

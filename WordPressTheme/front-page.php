@@ -23,8 +23,9 @@
                     <img src="<?php echo esc_url($mobile_image[0]); ?>" alt="" />
                   </picture>
                 </div>
-          <?php endif; endforeach;
-            endif;
+          <?php endif;
+            endforeach;
+          endif;
           ?>
         </div>
       </div>
@@ -73,25 +74,27 @@
                         }
                       }
                       ?>
-                      <p class="card-campaign__title"><?php the_title(); ?></p>
-                    </div>
-                    <div class="card-campaign__price-wrap">
-                      <p class="card-campaign__price-title">
-                        全部コミコミ(お一人様)
+                      <p class="card-campaign__title">
+                        <?php the_title(); ?>
                       </p>
-                      <div class="card-campaign__price-box">
-                        <?php if (get_field('campaign-price1')) : ?>
-                          <p class="card-campaign__price-text">
-                            ¥<?php the_field("campaign-price1"); ?>
-                          </p>
-                        <?php endif; ?>
-                        <?php if (get_field('campaign-price2')) : ?>
-                          <p class="card-campaign__price-subtext">
-                            ¥<?php the_field("campaign-price2"); ?>
-                          </p>
-                        <?php endif; ?>
-                      </div>
                     </div>
+                    <?php
+                    $campaignPrice = get_field('campaign-price');
+                    if ($campaignPrice) : ?>
+                      <div class="card-campaign__price-wrap">
+                        <p class="card-campaign__price-title">
+                          <?php echo $campaignPrice["campaign-priceTitle"]; ?>
+                        </p>
+                        <div class="card-campaign__price-box card-campaign__price-box--campaign">
+                          <p class="card-campaign__price-text">
+                            ¥<?php echo $campaignPrice["campaign-price1"]; ?>
+                          </p>
+                          <p class="card-campaign__price-subtext">
+                            ¥<?php echo $campaignPrice["campaign-price2"]; ?>
+                          </p>
+                        </div>
+                      </div>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>
@@ -136,7 +139,7 @@
           </h2>
           <div class="aboutus__text-box">
             <p class="aboutus__text">
-            私たちは世界中の美しい海の底に潜り込み、驚くべき海底世界を探索することに情熱を燃やしています。<br/>ダイビングは私たちの生活の一部であり、この素晴らしい冒険を共有することで、多くの人々に海の奥深さと美しさを伝えたいと考えています。
+              私たちは世界中の美しい海の底に潜り込み、驚くべき海底世界を探索することに情熱を燃やしています。<br />ダイビングは私たちの生活の一部であり、この素晴らしい冒険を共有することで、多くの人々に海の奥深さと美しさを伝えたいと考えています。
             </p>
             <div class="aboutus__btn">
               <a href="<?php echo esc_url(home_url("/about-us")) ?>" class="button">View more<span></span></a>
@@ -240,21 +243,24 @@
                 <div class="card-voice__container">
                   <div class="card-voice__title-box">
                     <div class="card-voice__box">
-                      <div class="card-voice__meta">
-                        <?php if (get_field('voice-age')) : ?>
+                      <?php
+                      $voiceAge = get_field('voice-age2');
+                      if ($voiceAge) : ?>
+                        <div class="card-voice__meta">
                           <p class="card-voice__age">
-                            <?php the_field("voice-age"); ?>
+                            <?php echo $voiceAge["age"]; ?>代
+                            （<?php echo $voiceAge["gender"]; ?>）
                           </p>
-                        <?php endif; ?>
-                        <?php
-                        $taxonomy_terms = get_the_terms($post->ID, 'voice_category');
-                        if (!empty($taxonomy_terms)) {
-                          foreach ($taxonomy_terms as $taxonomy_term) {
-                            echo '<span class="card-voice__tag">' . esc_html($taxonomy_term->name) . '</span>';
+                          <?php
+                          $taxonomy_terms = get_the_terms($post->ID, 'voice_category');
+                          if (!empty($taxonomy_terms)) {
+                            foreach ($taxonomy_terms as $taxonomy_term) {
+                              echo '<span class="card-voice__tag">' . esc_html($taxonomy_term->name) . '</span>';
+                            }
                           }
-                        }
-                        ?>
-                      </div>
+                          ?>
+                        </div>
+                      <?php endif; ?>
                       <p class="card-voice__title">
                         <?php the_title(); ?>
                       </p>
@@ -269,8 +275,7 @@
                     </div>
                   </div>
                   <p class="card-voice__text">
-                    <?php the_content(); ?>
-
+                    <?php the_field('voice'); ?>
                   </p>
                 </div>
               </div>
