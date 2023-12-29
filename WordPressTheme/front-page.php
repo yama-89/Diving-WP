@@ -7,12 +7,11 @@
       <div class="mv__slider swiper js-mv-swiper">
         <div class="swiper-wrapper">
           <?php
-          $slides = SCF::get('mv-slider'); // SCFフィールド名に置き換える
-
+          $slides = SCF::get_option_meta('image-options', 'mv');; // SCFフィールド名に置き換える
           if ($slides) :
             foreach ($slides as $slide) :
-              $desktop_image = wp_get_attachment_image_src($slide['pc-mv'], 'large');
-              $mobile_image = wp_get_attachment_image_src($slide['sp-mv'], 'large');
+              $desktop_image = wp_get_attachment_image_src($slide['pcmv'], 'large');
+              $mobile_image = wp_get_attachment_image_src($slide['spmv'], 'large');
               // $slide_title = esc_html($slide['MVスライダー']); // タイトルフィールドの名前に置き換える
 
               if (!empty($desktop_image) && !empty($mobile_image)) :
@@ -85,7 +84,7 @@
                         <p class="card-campaign__price-title">
                           <?php echo $campaignPrice["campaign-priceTitle"]; ?>
                         </p>
-                        <div class="card-campaign__price-box card-campaign__price-box--campaign">
+                        <div class="card-campaign__price-box">
                           <p class="card-campaign__price-text">
                             ¥<?php echo $campaignPrice["campaign-price1"]; ?>
                           </p>
@@ -298,90 +297,111 @@
       </div>
       <div class="price__container">
         <div class="price__left-side">
-          <h3 class="price__items-title">ライセンス講習</h3>
-          <dl class="price__items price-item">
-      <?php $free_item = SCF::get_option_meta('price-options', 'price-page1'); ?>
+          <?php $free_item = SCF::get_option_meta('price-options', 'price-page1'); ?>
+          <?php $text = SCF::get_option_meta('price-options', 'menu-title'); ?>
+          <?php if ($free_item[0]["title1"]) : ?>
+            <h3 class="price__items-title">
+              <?php echo $text; ?>
+            </h3>
+            <dl class="price__items price-item">
+              <?php
+              // $free_items = SCF::get('price-page', 25); // 正しいフィールド名を使用
+              foreach ($free_item as $fields) :
+                if (!empty($fields['title1']) && !empty($fields['price1'])) :
+              ?>
+                  <div class="price-item__text-box">
+                    <dt class="price-item__text">
+                      <?php echo ($fields['title1']); ?>
+                    </dt>
+                    <dd class="price-item__price">
+                      <?php echo $fields['price1']; ?>
+                    </dd>
+                  </div>
+              <?php
+                endif;
+              endforeach;
+              ?>
+            <?php endif; ?>
+            </dl>
+            <?php $free_item = SCF::get_option_meta('price-options', 'price-page2'); ?>
+            <?php $text = SCF::get_option_meta('price-options', 'menu-title2'); ?>
+            <?php if ($free_item[0]["title2"]) : ?>
+              <h3 class="price__items-title">
+                <?php echo $text; ?>
+              </h3>
+              <dl class="price__items price-item">
+                <?php
+                // $free_items = SCF::get('price-page2', 25); // 正しいフィールド名を使用
+                foreach ($free_item as $fields) :
+                  if (!empty($fields['title2']) && !empty($fields['price2'])) :
+                ?>
+                    <div class="price-item__text-box">
+                      <dt class="price-item__text">
+                        <?php echo ($fields['title2']); ?>
+                      </dt>
+                      <dd class="price-item__price">
+                        <?php echo $fields['price2']; ?>
+                      </dd>
+                    </div>
 
-            <?php
-            $free_items = SCF::get('price-page', 25); // 正しいフィールド名を使用
-            foreach ($free_items as $free_item) :
-              if (!empty($free_item['title1']) && !empty($free_item['price1'])) :
-            ?>
-                <div class="price-item__text-box">
-                  <dt class="price-item__text">
-                    <?php echo ($free_item['title1']); ?>
-                  </dt>
-                  <dd class="price-item__price">
-                    <?php echo $free_item['price1']; ?>
-                  </dd>
-                </div>
-            <?php
-              endif;
-            endforeach;
-            ?>
-          </dl>
-          <h3 class="price__items-title">体験ダイビング</h3>
-          <dl class="price__items price-item">
-            <?php
-            $free_items = SCF::get('price-page2', 25); // 正しいフィールド名を使用
-            foreach ($free_items as $free_item) :
-              if (!empty($free_item['title2']) && !empty($free_item['price2'])) :
-            ?>
-                <div class="price-item__text-box">
-                  <dt class="price-item__text">
-                    <?php echo ($free_item['title2']); ?>
-                  </dt>
-                  <dd class="price-item__price">
-                    <?php echo $free_item['price2']; ?>
-                  </dd>
-                </div>
+                <?php
+                  endif;
+                endforeach;
+                ?>
+              <?php endif; ?>
+              </dl>
 
-            <?php
-              endif;
-            endforeach;
-            ?>
-          </dl>
-          <h3 class="price__items-title">ファンダイビング</h3>
-          <dl class="price__items price-item">
-            <?php
-            $free_items = SCF::get('price-page3', 25); // 正しいフィールド名を使用
-            foreach ($free_items as $free_item) :
-              if (!empty($free_item['title3']) && !empty($free_item['price3'])) :
-            ?>
-                <div class="price-item__text-box">
-                  <dt class="price-item__text">
-                    <?php echo ($free_item['title3']); ?>
-                  </dt>
-                  <dd class="price-item__price">
-                    <?php echo $free_item['price3']; ?>
-                  </dd>
-                </div>
+              <?php $free_item = SCF::get_option_meta('price-options', 'price-page3'); ?>
+              <?php $text = SCF::get_option_meta('price-options', 'menu-title3'); ?>
+              <?php if ($free_item[0]["title3"]) : ?>
+                <h3 class="price__items-title">
+                  <?php echo $text; ?>
+                </h3>
+                <dl class="price__items price-item">
+                  <?php
+                  // $free_items = SCF::get('price-page3', 25); // 正しいフィールド名を使用
+                  foreach ($free_item as $fields) :
+                    if (!empty($fields['title3']) && !empty($fields['price3'])) :
+                  ?>
+                      <div class="price-item__text-box">
+                        <dt class="price-item__text">
+                          <?php echo ($fields['title3']); ?>
+                        </dt>
+                        <dd class="price-item__price">
+                          <?php echo $fields['price3']; ?>
+                        </dd>
+                      </div>
+                  <?php
+                    endif;
+                  endforeach;
+                  ?>
+                <?php endif; ?>
+                </dl>
 
-            <?php
-              endif;
-            endforeach;
-            ?>
-          </dl>
-          <h3 class="price__items-title">スペシャルダイビング</h3>
-          <dl class="price__items price-item">
-            <?php
-            $free_items = SCF::get('price-page4', 25); // 正しいフィールド名を使用
-            foreach ($free_items as $free_item) :
-              if (!empty($free_item['title4']) && !empty($free_item['price4'])) :
-            ?>
-                <div class="price-item__text-box">
-                  <dt class="price-item__text">
-                    <?php echo ($free_item['title4']); ?>
-                  </dt>
-                  <dd class="price-item__price">
-                    <?php echo $free_item['price4']; ?>
-                  </dd>
-                </div>
-            <?php
-              endif;
-            endforeach;
-            ?>
-          </dl>
+                <?php $free_item = SCF::get_option_meta('price-options', 'price-page4'); ?>
+                <?php $text = SCF::get_option_meta('price-options', 'menu-title3'); ?>
+                <?php if ($free_item[0]["title4"]) : ?>
+                  <h3 class="price__items-title"><?php echo $text; ?>スペシャルダイビング</h3>
+                  <dl class="price__items price-item">
+                    <?php
+                    // $free_items = SCF::get('price-page4', 25); // 正しいフィールド名を使用
+                    foreach ($free_item as $fields) :
+                      if (!empty($fields['title4']) && !empty($fields['price4'])) :
+                    ?>
+                        <div class="price-item__text-box">
+                          <dt class="price-item__text">
+                            <?php echo ($fields['title4']); ?>
+                          </dt>
+                          <dd class="price-item__price">
+                            <?php echo $fields['price4']; ?>
+                          </dd>
+                        </div>
+                    <?php
+                      endif;
+                    endforeach;
+                    ?>
+                  <?php endif; ?>
+                  </dl>
         </div>
         <div class="price__right-side">
           <div class="price__img js-colorbox">

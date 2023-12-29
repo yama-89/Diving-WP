@@ -273,6 +273,7 @@ add_action( 'init', function() {
 SCF::add_options_page( 'ギャラリー画像', 'ギャラリー画像', 'manage_options', 'gallery-options','dashicons-format-gallery',10 );
 SCF::add_options_page( 'よくある質問', 'よくある質問', 'manage_options', 'faq-options','dashicons-editor-help',10 );
 SCF::add_options_page( '料金一覧', '料金一覧', 'manage_options', 'price-options','dashicons-money-alt',10 );
+SCF::add_options_page( 'メインビュー画像', 'メインビュー画像', 'manage_options', 'image-options','dashicons-format-gallery',10 );
 
 
 

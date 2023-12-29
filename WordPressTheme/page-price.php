@@ -87,12 +87,15 @@
         </div>
       <?php endif; ?>
 
-      <?php $free_item = SCF::get('price-page4'); ?>
+      <?php $free_item = SCF::get_option_meta('price-options', 'price-page4'); ?>
+      <?php $text = SCF::get_option_meta('price-options', 'menu-title3'); ?>
       <?php if ($free_item[0]["title4"]) : ?>
         <div class="page-price__content page-price-item">
           <div class="page-price-item__item page-price-item__header">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
-            <h3 class="page-price-item__title" id="special">スペシャルダイビング</h3>
+            <h3 class="page-price-item__title" id="special">
+              <?php echo $text; ?>
+            </h3>
           </div>
           <?php foreach ($free_item as $fields) : ?>
             <?php if (!empty($fields['title4']) || !empty($fields['price4'])) : ?>
