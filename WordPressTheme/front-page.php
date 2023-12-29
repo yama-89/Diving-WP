@@ -300,6 +300,8 @@
         <div class="price__left-side">
           <h3 class="price__items-title">ライセンス講習</h3>
           <dl class="price__items price-item">
+      <?php $free_item = SCF::get_option_meta('price-options', 'price-page1'); ?>
+
             <?php
             $free_items = SCF::get('price-page', 25); // 正しいフィールド名を使用
             foreach ($free_items as $free_item) :
