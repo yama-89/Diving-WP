@@ -261,3 +261,18 @@ add_action( 'init', function() {
 	remove_post_type_support( 'campaign', 'editor' ); 
 	remove_post_type_support( 'voice', 'editor' ); 
 }, 99);
+
+/**
+ * @param string $page_title ページのtitle属性値
+ * @param string $menu_title 管理画面のメニューに表示するタイトル
+ * @param string $capability メニューを操作できる権限（manage_options とか）
+ * @param string $menu_slug オプションページのスラッグ。ユニークな値にすること。
+ * @param string|null $icon_url メニューに表示するアイコンの URL
+ * @param int $position メニューの位置
+ */
+SCF::add_options_page( 'ギャラリー画像', 'ギャラリー画像', 'manage_options', 'gallery-options','dashicons-format-gallery',10 );
+SCF::add_options_page( 'よくある質問', 'よくある質問', 'manage_options', 'faq-options','dashicons-editor-help',10 );
+SCF::add_options_page( '料金一覧', '料金一覧', 'manage_options', 'price-options','dashicons-money-alt',10 );
+
+
+

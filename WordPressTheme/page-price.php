@@ -18,13 +18,15 @@
 
   <section class="page-price layout-page-price">
     <div class="page-price__inner inner">
-
-      <?php $free_item = SCF::get('price-page'); ?>
+      <?php $free_item = SCF::get_option_meta('price-options', 'price-page1'); ?>
+      <?php $text = SCF::get_option_meta('price-options', 'menu-title'); ?>
       <?php if ($free_item[0]["title1"]) : ?>
         <div class="page-price__content page-price-item">
           <div class="page-price-item__item page-price-item__header">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
-            <h3 class="page-price-item__title" id="license">ライセンス講習</h3>
+            <h3 class="page-price-item__title" id="license">
+              <?php echo $text; ?>
+            </h3>
           </div>
           <?php foreach ($free_item as $fields) : ?>
             <?php if (!empty($fields['title1']) || !empty($fields['price1'])) : ?>
@@ -39,13 +41,15 @@
         </div>
       <?php endif; ?>
 
-
-      <?php $free_item = SCF::get('price-page2'); ?>
+      <?php $free_item = SCF::get_option_meta('price-options', 'price-page2'); ?>
+      <?php $text = SCF::get_option_meta('price-options', 'menu-title2'); ?>
       <?php if ($free_item[0]["title2"]) : ?>
         <div class="page-price__content page-price-item">
           <div class="page-price-item__item page-price-item__header">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
-            <h3 class="page-price-item__title" id="experience">体験ダイビング</h3>
+            <h3 class="page-price-item__title" id="experience">
+              <?php echo $text; ?>
+            </h3>
           </div>
           <?php foreach ($free_item as $fields) : ?>
             <?php if (!empty($fields['title2']) || !empty($fields['price2'])) : ?>
@@ -60,12 +64,15 @@
         </div>
       <?php endif; ?>
 
-      <?php $free_item = SCF::get('price-page3'); ?>
+      <?php $free_item = SCF::get_option_meta('price-options', 'price-page3'); ?>
+      <?php $text = SCF::get_option_meta('price-options', 'menu-title3'); ?>
       <?php if ($free_item[0]["title3"]) : ?>
         <div class="page-price__content page-price-item">
           <div class="page-price-item__item page-price-item__header">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />
-            <h3 class="page-price-item__title" id="fun">ファンダイビング</h3>
+            <h3 class="page-price-item__title" id="fun">
+            <?php echo $text; ?>
+          </h3>
           </div>
           <?php foreach ($free_item as $fields) : ?>
             <?php if (!empty($fields['title3']) || !empty($fields['price3'])) : ?>
@@ -81,7 +88,7 @@
       <?php endif; ?>
 
       <?php $free_item = SCF::get('price-page4'); ?>
-        <?php if ($free_item[0]["title4"]): ?>
+      <?php if ($free_item[0]["title4"]) : ?>
         <div class="page-price__content page-price-item">
           <div class="page-price-item__item page-price-item__header">
             <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-tab-button1.svg" alt="" />

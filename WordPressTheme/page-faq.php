@@ -25,7 +25,7 @@
       <section class="page-faq layout-page-faq">
         <div class="page-faq__inner inner">
         <?php
-        $free_item = SCF::get('FAQ');
+        $free_item = SCF::get_option_meta('faq-options','FAQ');
         foreach ($free_item as $fields) :
           if ($fields['title'] !== "" and $fields['text'] !== "") :
         ?>

@@ -38,7 +38,7 @@
         </h2>
         <div class="page-aboutus__text-box">
           <p class="page-aboutus__text">
-            ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br />ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+          深海へのダイブ。輝く海の底には未知の世界が広がり、美しい生態系が待っています。驚きと冒険の旅が、そこで始まります。
           </p>
         </div>
       </div>
@@ -46,7 +46,7 @@
   </section>
 
 
-  <?php $imgGroup = SCF::get('gallery'); ?>
+  <?php $imgGroup = SCF::get_option_meta('gallery-options','gallery'); ?>
 
   <?php if ($imgGroup[0]["image1"]) : ?>
     <section class="gallery layout-gallery">
