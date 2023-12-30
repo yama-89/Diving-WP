@@ -2,6 +2,18 @@
 
 <main>
   <!-- メインビュー -->
+  <div class="loader js-loader">
+    <span class="loader__line js-loader-line"></span>
+    <span class="loader__line js-loader-line"></span>
+    <span class="loader__line js-loader-line"></span>
+    <span class="loader__line js-loader-line"></span>
+    <span class="loader__line js-loader-line"></span>
+    <span class="loader__line js-loader-line"></span>
+    <span class="loader__line js-loader-line"></span>
+    <span class="loader__line js-loader-line"></span>
+    <span class="loader__line js-loader-line"></span>
+    <span class="loader__line js-loader-line"></span>
+  </div>
   <section id="mv" class="mv">
     <div class="mv__inner">
       <div class="mv__slider swiper js-mv-swiper">
@@ -29,8 +41,8 @@
         </div>
       </div>
       <div class="mv__title-wrap">
-        <h2 class="mv__title">DIVING</h2>
-        <p class="mv__sub-title">into the ocean</p>
+        <h2 class="mv__title js-title">DIVING</h2>
+        <p class="mv__sub-title js-title">into the ocean</p>
       </div>
     </div>
   </section>
@@ -54,8 +66,8 @@
           ?>
             <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
 
-              <div class="swiper-slide campaign__card">
-                <div class="card-campaign">
+              <div class="swiper-slide campaign__card js-fadeIns">
+                <div class="card-campaign js-fadeIns-child">
                   <div class="card-campaign__img">
                     <?php if (has_post_thumbnail()) : ?>
                       <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="card-campaign__img" />
@@ -111,7 +123,7 @@
   </section>
 
   <!-- about us -->
-  <section id="aboutus" class="aboutus top-aboutus">
+  <section id="aboutus" class="aboutus top-aboutus js-aboutus">
     <div class="aboutus__inner inner">
       <div class="aboutus__title section-title section-title--aboutus">
         <span>About&nbsp;us</span>
@@ -119,13 +131,13 @@
       </div>
       <div class="aboutus__container">
         <div class="aboutus__img-box">
-          <div class="aboutus__left-img">
+          <div class="aboutus__left-img js-aboutus-leftImg">
             <picture>
               <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-aboutus1.jpg" media="(min-width: 1024px)" />
               <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sp-aboutus1.jpg" alt="屋根の上にシーサーが置いてある様子" />
             </picture>
           </div>
-          <div class="aboutus__right-img">
+          <div class="aboutus__right-img js-aboutus-rightImg">
             <picture>
               <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-aboutus-right.jpg" media="(min-width: 1024px)" />
               <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sp-aboutus2.jpg" alt="２匹の黄色い魚が泳いでいる様子" />
@@ -156,7 +168,7 @@
         <h2 class="section-title__main">ダイビング情報</h2>
       </div>
       <div class="infomation__container">
-        <div class="infomation__img js-colorbox">
+        <div class="infomation__img js-maskImg">
           <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sp-infomation.jpg" alt="３匹のオレンジの魚が泳いでいる様子" />
         </div>
         <div class="infomation__box">
@@ -181,7 +193,7 @@
           ブログ
         </h2>
       </div>
-      <div class="blog__cards blog-cards">
+      <div class="blog__cards blog-cards js-fadeIns">
         <?php
         $args = array(
           'post_type' => 'post',
@@ -191,7 +203,7 @@
         if ($the_query->have_posts()) :
         ?>
           <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-            <a href="<?php the_permalink(); ?>" class="blog-cards__card card-blog">
+            <a href="<?php the_permalink(); ?>" class="blog-cards__card card-blog js-fadeIns-child">
               <div class="card-blog__container">
                 <div class="card-blog__img">
                   <?php if (has_post_thumbnail()) : ?>
@@ -228,7 +240,7 @@
         <h2 class="section-title__main">お客様の声</h2>
       </div>
       <div class="voice__container">
-        <div class="voice__cards voice-cards">
+        <div class="voice__cards voice-cards js-fadeIns">
           <?php
           $args = array(
             'post_type' => 'voice',
@@ -238,7 +250,7 @@
           if ($the_query->have_posts()) :
           ?>
             <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-              <div class="voice-cards__card card-voice">
+              <div class="voice-cards__card card-voice js-fadeIns-child">
                 <div class="card-voice__container">
                   <div class="card-voice__title-box">
                     <div class="card-voice__box">
@@ -264,7 +276,7 @@
                         <?php the_title(); ?>
                       </p>
                     </div>
-                    <div class="card-voice__img js-colorbox">
+                    <div class="card-voice__img js-maskImg">
                       <?php if (has_post_thumbnail()) : ?>
                         <img src="<?php echo the_post_thumbnail_url(); ?>" alt="img" class="card-voice__img" />
                       <?php else : ?>
@@ -404,7 +416,7 @@
                   </dl>
         </div>
         <div class="price__right-side">
-          <div class="price__img js-colorbox">
+          <div class="price__img js-maskImg">
             <picture>
               <source srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/pc-price.jpg" media="(min-width: 768px)" type="image/png" />
               <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/sp-price.jpg" alt="”複数の赤い魚が泳いでいる様子”" />

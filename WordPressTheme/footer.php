@@ -14,7 +14,7 @@ $sitemap = esc_url(home_url('/sitemap/'));
 ?>
 
 <?php if (!is_page('contact') && !is_404()) : ?>
-    <section id="contact" class="contact top-contact">
+    <section id="contact" class="contact top-contact js-contact">
         <div class="contact__inner">
             <div class="contact__container">
                 <div class="contact__left">

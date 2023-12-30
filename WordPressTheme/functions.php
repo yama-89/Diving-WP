@@ -48,9 +48,9 @@ function my_script_init()
     wp_enqueue_script('script-js', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), '1.0.1', true);
 
     // GSAP
-    // wp_enqueue_script( 'gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', array(), null, true );
-    // wp_enqueue_script( 'scroll-trigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js', array(), null, true );
-    // wp_enqueue_script( 'gsap2', get_template_directory_uri() . '/js/gsap.js', array( 'jquery' ), '1.0.1', true );
+    wp_enqueue_script( 'gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js', array(), null, true );
+    wp_enqueue_script( 'scroll-trigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js', array(), null, true );
+    wp_enqueue_script( 'gsap2', get_template_directory_uri() . '/assets/js/gsap.js', array( 'jquery' ), '1.0.1', true );
 
 }
 add_action('wp_enqueue_scripts', 'my_script_init');
