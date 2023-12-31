@@ -2,17 +2,19 @@
 
 
 .loader{
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  &__line{
+  @include mq(md){
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    &__line{
       width: 100%;
       height: 10%;
       display: block;
       background: $gray2;
+    }
   }
 }
 
@@ -26,10 +28,12 @@
   }
 }
 .js-maskImg{
-  mask-image: linear-gradient(135deg, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0.4) 45%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0) 100%);
-  mask-size: 250% 250%;
-  mask-repeat: no-repeat;
-  mask-position: 130% 130%;
+  @include mq(md){
+    mask-image: linear-gradient(135deg, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0.4) 45%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0) 100%);
+    mask-size: 250% 250%;
+    mask-repeat: no-repeat;
+    mask-position: 130% 130%;
+  }
 }
 
 .js-maskImg.is-open{
